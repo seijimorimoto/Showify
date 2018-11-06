@@ -6,14 +6,35 @@
         <link rel="stylesheet" href="./css/showPageStyles.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
-    <nav>
-        <div class="nav-wrapper">
-            <a href="#Main" class="logo"><p><img src="./img/logo.png" style="height: 50%;width: 50%"/></p></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="index.html"><i class="material-icons left">home</i>Index</a></li>
-            </ul>
+        <div class="navbar-fixed">
+            <nav class="blue accent-2">
+                <div class="nav-wrapper">
+                    <div class="row">
+                        <div class="col s2">
+                            <ul class="left">
+                                <li><a href="#">Logo</a></li>
+                            </ul>
+                        </div>
+                        <div class="col s7">
+                            <form class="search-input">
+                                <div class="input-field">
+                                    <input id="search" type="search" required>
+                                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                    <i class="material-icons">close</i>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col s3">
+                            <ul class="right">
+                                <li><a href="#">Produtos</a></li>
+                                <li><a href="#">Sobre</a></li>
+                                <li><a href="#">Contato</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
         </div>
-    </nav>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="./js/showPage.JQ.js"></script>
