@@ -1,0 +1,12 @@
+nav {
+    background-color: rgb(43,44,68) ;
+  }
+
+.logo {
+    display: inline-block;
+    height: 100%;
+}
+
+.logo>img {
+    vertical-align: middle
+}
