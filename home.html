@@ -1,49 +1,68 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!--Import Google Icon Font-->
+    <!-- Importing Google Icon Font -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
+    <!-- Importing Materialize.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Proprietary CSS -->
     <link rel="stylesheet" href="./css/common.css">
-
-    <!--Let browser know website is optimized for mobile-->
+    <!-- Let the browser know the website is optimized for mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
   <body>
-    <!--
-      Navigation Menu. It could have been done with the nav tag and the facilities associated
-      with it in Materialize framework; however, some difficulties were found when trying to achieve
-      specific behavior (such as adding the search box within the nav and the other elements).
-    -->
-    <div id="navMenu" class="row light-blue darken-4 valign-wrapper-large-and-up">
-      <div class="col s12 m4 center">
-        <a href="#" class="logoText grey-text text-lighten-5">Showify</a>
-      </div>
-      <div class="input-field col s12 m8">
-        <i class="material-icons prefix grey-text text-lighten-5">search</i>
-        <input id="searchBox" class="grey-text text-lighten-5" type="search" placeholder="Search shows">
-      </div>
 
-      <div class="col s12 m4 center"> 
-        <a href="#" class="grey-text text-lighten-5 menuItem">Followed Shows</a>
+    <!-- Navigation menu -->
+    <nav class="blue accent-2">
+      <div class="nav-wrapper">
+        <div class="row navRow">
+          <div class="col s12 m5 l2 center">
+            <a href="#" data-target="mobile-nav" class="sidenav-trigger left"><i class="material-icons">menu</i></a>
+            <img class="logo" src="img/logo.png" alt="Showify logo">
+          </div>
+          <div class="s12 col m7 l5">
+            <form class="search-input">
+              <div class="input-field">
+                <input id="search" type="search" required>
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+              </div>
+            </form>
+          </div>
+          <div class="col l5 hide-on-med-and-down">
+            <ul class="right">
+              <li><a href="#"><i class="material-icons left">star</i>Followed Shows</a></li>
+              <li><a href="#"><i class="material-icons left">person</i>Profile</a></li>
+              <li><a href="#"><i class="material-icons left">exit_to_app</i>Logout</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="col s12 m4 center">
-        <a href="#" class="grey-text text-lighten-5 menuItem">Profile</a>
-      </div>
-      <div class="col s12 m4 center">
-        <a href="#" class="grey-text text-lighten-5 menuItem">Logout</a>
-      </div>
-    </div>
+    </nav>
 
+    <!-- Elements that appear in the side navigation menu when it is triggered -->
+    <ul class="sidenav" id="mobile-nav">
+      <li><a href="#"><i class="material-icons left">star</i>Followed Shows</a></li>
+      <li><a href="#"><i class="material-icons left">person</i>Profile</a></li>
+      <li><a href="#"><i class="material-icons left">exit_to_app</i>Logout</a></li>
+    </ul>
+
+    <!-- Empty space between the navigation menu and the rest of the content of the page -->
+    <div class="emptySpace"></div>
+
+    <!-- Here starts the content of the page -->
     <div class="container">
       <div class="section">
         <h4 class="header center-align">Most Followed Shows</h1>
       </div>
-    </div>
-    
-    <!--JavaScript at end of body for optimized loading-->
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+    </div> 
+
+    <!-- Importing JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <!--Importing Materialize.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <!-- Proprietary scripts -->
+    <script src="./js/home.js"></script>
   </body>
 </html>

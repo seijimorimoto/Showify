@@ -1,29 +1,47 @@
-.logoText {
-  font-size: 40px;
+.navRow {
+  background-color: #438AFE;
+  padding: 20px 0px;
 }
 
-.menuItem {
-  font-size: 20px;
+.emptySpace {
+  height: 90px;
 }
 
-#navMenu {
-  padding: 10px;
+.logo {
+  display: inline-block;
+  height: 50px;
+  vertical-align: middle;
 }
 
-#searchBox {
-  background-color: transparent;
-  font-size: 20px;
+input[id="search"] {
+  height: 45px !important; 
+  margin-top: 10px;
+  border-radius: 5px;
 }
 
-@media only screen and (min-width: 993px) {
-  .valign-wrapper-large-and-up {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
+.search-input {
+  background-color: #82b1ff ;
+  height: 45px !important; 
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+nav .input-field label {
+  top: -8px;
+  left: 0;
+}
+
+#search {
+  border-radius: 5px;
+  outline: none;
+}
+
+@media only screen and (min-width: 601px) {
+  nav {
+    padding: 10px 0px;
+  }
+
+  .emptySpace {
+    height: 50px;
   }
 }
