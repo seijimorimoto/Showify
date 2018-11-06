@@ -14,7 +14,9 @@ CREATE TABLE Users (
   email VARCHAR(255) NOT NULL,
   gender VARCHAR(255) NOT NULL,
   country VARCHAR(255) NOT NULL,
-  FOREIGN KEY (country) REFERENCES Countries(country) 
+  genre VARCHAR(255) NOT NULL,
+  FOREIGN KEY (country) REFERENCES Countries(country),
+  FOREIGN KEY (genre) REFERENCES Genres(genre)
 );
 
 CREATE TABLE Shows (

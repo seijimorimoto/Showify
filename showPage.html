@@ -1,42 +1,65 @@
+<!DOCTYPE html>
 <html>
+  <head>
+    <!-- Importing Google Icon Font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Importing Materialize.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Proprietary CSS -->
+    <link rel="stylesheet" href="./css/common.css">
+    <!-- Let the browser know the website is optimized for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
 
-    <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-        <link rel="stylesheet" href="./css/showPageStyles.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    </head>
-        <div class="navbar-fixed">
-            <nav class="blue accent-2">
-                <div class="nav-wrapper">
-                    <div class="row">
-                        <div class="col s2">
-                            <ul class="left">
-                                <li><a href="#">Logo</a></li>
-                            </ul>
-                        </div>
-                        <div class="col s7">
-                            <form class="search-input">
-                                <div class="input-field">
-                                    <input id="search" type="search" required>
-                                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                                    <i class="material-icons">close</i>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col s3">
-                            <ul class="right">
-                                <li><a href="#">Produtos</a></li>
-                                <li><a href="#">Sobre</a></li>
-                                <li><a href="#">Contato</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+  <body>
+
+    <!-- Navigation menu -->
+    <nav class="blue accent-2">
+      <div class="nav-wrapper">
+        <div class="row navRow">
+          <div class="col s12 m5 l2 center">
+            <a href="#" data-target="mobile-nav" class="sidenav-trigger left"><i class="material-icons">menu</i></a>
+            <img class="logo" src="img/logo.png" alt="Showify logo">
+          </div>
+          <div class="s12 col m7 l5">
+            <form class="search-input">
+              <div class="input-field">
+                <input id="search" type="search" required>
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+              </div>
+            </form>
+          </div>
+          <div class="col l5 hide-on-med-and-down">
+            <ul class="right">
+              <li><a href="#"><i class="material-icons left">star</i>Followed Shows</a></li>
+              <li><a href="#"><i class="material-icons left">person</i>Profile</a></li>
+              <li><a href="#"><i class="material-icons left">exit_to_app</i>Logout</a></li>
+            </ul>
+          </div>
         </div>
+      </div>
+    </nav>
+
+    <!-- Elements that appear in the side navigation menu when it is triggered -->
+    <ul class="sidenav" id="mobile-nav">
+      <li><a href="#"><i class="material-icons left">star</i>Followed Shows</a></li>
+      <li><a href="#"><i class="material-icons left">person</i>Profile</a></li>
+      <li><a href="#"><i class="material-icons left">exit_to_app</i>Logout</a></li>
+    </ul>
+
+    <!-- Empty space between the navigation menu and the rest of the content of the page -->
+    <div class="emptySpace"></div>
+
+    <!-- Here starts the content of the page -->
+    <div class="container">
+    </div> 
+
+    <!-- Importing JQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
-    <script type="text/javascript" src="./js/showPage.JQ.js"></script>
-
+    <!--Importing Materialize.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <!-- Proprietary scripts -->
+    <script src="./js/showPage.JQ.js"></script>
+  </body>
 </html>

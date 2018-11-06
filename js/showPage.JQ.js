@@ -1,6 +1,4 @@
-$(document).ready(function(){
-
-    //collpase for mobile button
-    $(".button-collapse").sideNav();
-
-});
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems);
+  });
