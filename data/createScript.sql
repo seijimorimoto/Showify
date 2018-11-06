@@ -14,9 +14,7 @@ CREATE TABLE Users (
   email VARCHAR(255) NOT NULL,
   gender VARCHAR(255) NOT NULL,
   country VARCHAR(255) NOT NULL,
-  genre VARCHAR(255) NOT NULL,
   FOREIGN KEY (country) REFERENCES Countries(country),
-  FOREIGN KEY (genre) REFERENCES Genres(genre)
 );
 
 CREATE TABLE Shows (
@@ -51,11 +49,19 @@ CREATE TABLE FollowedShows (
   FOREIGN KEY (showId) REFERENCES Shows(id)
 );
 
-CREATE Table Ratings (
+CREATE TABLE Ratings (
   username VARCHAR(255) NOT NULL,
   showId INT NOT NULL,
   score INT NOT NULL,
   PRIMARY KEY (username, showId),
   FOREIGN KEY (username) REFERENCES Users(username),
   FOREIGN KEY (showId) REFERENCES Shows(id)
+);
+
+CREATE TABLE ShowsGenres (
+  showId INT NOT NULL,
+  genre VARCHAR(255) NOT NULL,
+  PRIMARY KEY (showId, genre),
+  FOREIGN KEY (showId) REFERENCES Shows(id),
+  FOREIGN KEY (genre) REFERENCES Genres(genre)
 );
