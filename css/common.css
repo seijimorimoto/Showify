@@ -1,0 +1,29 @@
+.logoText {
+  font-size: 40px;
+}
+
+.menuItem {
+  font-size: 20px;
+}
+
+#navMenu {
+  padding: 10px;
+}
+
+#searchBox {
+  background-color: transparent;
+  font-size: 20px;
+}
+
+@media only screen and (min-width: 993px) {
+  .valign-wrapper-large-and-up {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
