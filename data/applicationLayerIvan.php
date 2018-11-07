@@ -51,7 +51,7 @@ function loadSeries()
 {
     //session_start();
     //if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["userName"])) {
-    if(true){
+     if(true){
         $showID = $_GET["showID"];
         $response = loadSeriesData($showID);
         if ($response["status"] == "SUCCESS") {
