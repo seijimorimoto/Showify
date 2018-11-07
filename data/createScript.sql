@@ -23,6 +23,7 @@ CREATE TABLE Shows (
   showDescription VARCHAR(2000) NOT NULL,
   showStatus VARCHAR(255) NOT NULL,
   showYear INT NOT NULL,
+  showImage VARCHAR(255) NOT NULL,
   totalEpisodes INT,
   currentEpisodes INT
 );
