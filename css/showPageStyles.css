@@ -1,0 +1,26 @@
+#followbutton{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+#rateButton{
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+.showInfo{
+    padding-top: 5px;
+}
+
+h2 {
+      display: inline-block;
+}
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#scoreSeries{
+    padding-right:5px;
+}

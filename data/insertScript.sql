@@ -195,3 +195,20 @@ INSERT INTO Countries (country) VALUES ("Vietnam");
 INSERT INTO Countries (country) VALUES ("Yemen");
 INSERT INTO Countries (country) VALUES ("Zambia");
 INSERT INTO Countries (country) VALUES ("Zimbabwe");
+
+--Genre inserts
+INSERT INTO Genres values ("Drama");
+INSERT INTO Genres values ("Medical Drama");
+INSERT INTO Genres values ("Comedy");
+
+
+-- Here start series inserts
+-- The Good Doctor insert
+INSERT INTO Shows (showName,showDescription,showStatus,showYear,showImage,totalEpisodes,currentSeasons) values ("The Good Doctor","Shaun Murphy, a young surgeon with autism and Savant syndrome, is recruited into the surgical unit of a prestigious hospital. Shaun Murphy, a young surgeon with autism and savant syndrome, relocates from a quiet country life to join a prestigious hospital surgical unit.","In emission","2017","img/The_Good_Doctor.jpg",24,2);
+INSERT INTO ShowsGenres values(1,"Drama");
+INSERT INTO ShowsGenres values(1,"Medical Drama");
+
+
+-- The Big Bang Theory
+INSERT INTO Shows (showName,showDescription,showStatus,showYear,showImage,totalEpisodes,currentSeasons) values ("The Big Bang Theory","The Big Bang Theory is a comedy about brilliant physicists, Leonard and Sheldon, who are the kind of beautiful minds that understand how the universe works. But none of that genius helps them interact with people, especially women. All this begins to change when a free-spirited beauty named Penny moves in next door.","In emission","2007","img/The_Big_Bang.jpg",262,12);
+INSERT INTO ShowsGenres values(2,"Comedy");

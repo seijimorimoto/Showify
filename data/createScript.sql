@@ -14,7 +14,7 @@ CREATE TABLE Users (
   email VARCHAR(255) NOT NULL,
   gender VARCHAR(255) NOT NULL,
   country VARCHAR(255) NOT NULL,
-  FOREIGN KEY (country) REFERENCES Countries(country),
+  FOREIGN KEY (country) REFERENCES Countries(country)
 );
 
 CREATE TABLE Shows (
@@ -25,7 +25,7 @@ CREATE TABLE Shows (
   showYear INT NOT NULL,
   showImage VARCHAR(255) NOT NULL,
   totalEpisodes INT,
-  currentEpisodes INT
+  currentSeasons INT
 );
 
 ALTER TABLE Shows AUTO_INCREMENT=1;
