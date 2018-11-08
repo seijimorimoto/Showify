@@ -39,6 +39,51 @@
     }
   }
 
+  function attemptLogin($username, $password) {
+    $conn = connect();
+
+    if ($conn != null) {
+      $sql = "SELECT passwd, firstName, lastName FROM Users WHERE username = ?";
+      $stmt = $conn->prepare($sql);
+
+      $stmt->bind_param('s', $username);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      if ($result->num_rows > 0) {
+        $passwordIsCorrect = false;
+        while ($row = $result->fetch_assoc()) {
+          $passwordHash = $row['passwd'];
+          $firstName = $row['firstName'];
+          $lastName = $row['lastName'];
+          if (password_verify($password, $passwordHash)) {
+            $passwordIsCorrect = true;
+          }
+        }
+
+        $stmt->close();
+        $conn->close();
+
+        if ($passwordIsCorrect) {
+          $response = array('firstName' => $firstName, 'lastName' => $lastName, 'message' => 'Successful login');
+          return array('status' => 'SUCCESS', 'response' => $response);
+        } else {
+          return array('status' => 'NOT_FOUND', 'code' => 406);
+        }
+      }
+      
+      else {
+        $stmt->close();
+        $conn->close();
+        return array('status' => 'NOT_FOUND', 'code' => 406);
+      }
+    }
+
+    else {
+      return array('status' => 'INTERNAL_SERVER_ERROR', 'code' => 500);
+    }
+  }
+
   function attemptRegistration($username, $password, $firstName, $lastName, $email, $gender, $country) {
     $conn = connect();
 

@@ -1,5 +1,7 @@
 $('#loginBtn').on('click', function() {
   swal({
+    allowEscapeKey: false,
+    allowOutsideClick: false,
     buttonsStyling: false,
     cancelButtonClass: 'waves-effect waves-light btn bold red confirmCancelBtn',
     confirmButtonClass: 'waves-effect waves-light btn bold teal confirmCancelBtn',
@@ -13,20 +15,47 @@ $('#loginBtn').on('click', function() {
           <div class="input-field col s12">
             <i class="material-icons prefix">account_circle</i>
             <input id="loginUsername" type="text" class="validate">
-            <label for="loginUsername">Username</label>
+            <label id="labelUsername" for="loginUsername">Username</label>
           </div>
           <div class="input-field col s12">
             <i class="material-icons prefix">lock</i>
             <input id="loginPassword" type="password" class="validate">
-            <label for="loginPassword">Password</label>
+            <label id="labelPassword" for="loginPassword">Password</label>
           </div>
         </div>
       </form>
     </div>
     `,
+    preConfirm: function() {
+      return new Promise(function (resolve, reject) {
+        if (validateLogin()) {
+          tryLogin()
+            .then(result => { resolve(true); })
+            .catch(error => { swal.showValidationMessage(`Request failed: ${error.message}`); resolve(false); });
+        } else {
+          swal.showValidationMessage('Some fields are not filled correctly');
+          resolve(false);
+        }
+      });
+    },
     showCancelButton: true,
     title: 'Login',
     type: 'info'
+  }).then((result) => {
+    if (result.value) {
+      swal({
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        buttonsStyling: false,
+        confirmButtonClass: 'waves-effect waves-light btn bold teal',
+        confirmButtonText: 'Go!',
+        text: 'You have been successfully logged. We will redirect you to your home page.',
+        title: 'Successful Login',
+        type: 'success',
+      }).then((_) => {
+        $(location).attr('href', './home.html');
+      });
+    }
   });
 });
 
@@ -117,12 +146,10 @@ $('#registerBtn').on('click', function() {
             .then(result => { resolve(true); })
             .catch(error => { swal.showValidationMessage(`Request failed: ${error.message}`); resolve(false); });
         } else {
-          reject('Some fields are not filled correctly');
+          swal.showValidationMessage('Some fields are not filled correctly');
+          resolve(false);
         }
       });
-      
-      // if (!validateRegistration())
-        // swal.showValidationMessage(`Please correct your data`);
     },
     showCancelButton: true,
     title: 'Registration',
@@ -159,6 +186,34 @@ function retrieveCountryList(callback = function(countryList) {}) {
       console.log(err);
     }
   });
+}
+
+function validateLogin() {
+  let $username = $('#loginUsername');
+  let $labelUsername = $('#labelUsername');
+  let $password = $('#loginPassword');
+  let $labelPassword = $('#labelPassword');
+  let isValid = true;
+
+  if ($($username).val() === "") {
+    isValid = false;
+    $($labelUsername).html('Username must not be empty.');
+    $($username).addClass('invalid');
+  } else {
+    $($labelUsername).html('Username');
+    $($username).removeClass('invalid');
+  }
+
+  if ($($password).val() === "") {
+    isValid = false;
+    $($labelPassword).html('Password must not be empty.');
+    $($password).addClass('invalid');
+  } else {
+    $($labelPassword).html('Password');
+    $($password).removeClass('invalid');
+  }
+
+  return isValid;
 }
 
 function validateRegistration() {
@@ -256,6 +311,35 @@ function validateRegistration() {
   }
   
   return isValid;
+}
+
+function tryLogin() {
+  let username = $('#loginUsername').val();
+  let password = $('#loginPassword').val();
+
+  let promise = new Promise(
+    function (resolve, reject) {
+      $.ajax({
+        url: './data/applicationLayerSeiji.php',
+        type: 'GET',
+        data: {
+          'action': 'LOGIN',
+          'username': username,
+          'password': password
+        },
+        ContentType: 'application/json',
+        dataType: 'json',
+        success: function(data) {
+          resolve(data);
+        },
+        error: function(err) {
+          reject(new Error(err.responseText));
+        }
+      });
+    }
+  );
+
+  return promise;
 }
 
 function tryRegistration() {

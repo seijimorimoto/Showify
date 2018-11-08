@@ -25,6 +25,9 @@
       case 'COUNTRIES':
         requestCountries();
         break;
+      case 'LOGIN':
+        requestLogin();
+        break;
     }
   }
 
@@ -50,6 +53,25 @@
       if ($response['code'] == 406)
         $message = 'There are no countries registered in the database';
       errorHandler($response['status'], $response['code'], $message);
+    }
+  }
+
+  # Handles the login of the application.
+  function requestLogin() {
+    $username = $_GET['username'];
+    $password = $_GET['password'];
+
+    $response = attemptLogin($username, $password);
+    
+    if ($response['status'] == 'SUCCESS') {
+      session_start();
+      $_SESSION['firstName'] = $response['response']['firstName'];
+      $_SESSION['lastName'] = $response['response']['lastName'];
+      $_SESSION['username'] = $username;
+
+      echo json_encode($response['response']['message']);
+    } else {
+      errorHandler($response['status'], $response['code']);
     }
   }
 
