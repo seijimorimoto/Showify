@@ -21,6 +21,8 @@ function getRequests($action)
     switch ($action) {
         case "LOAD_SERIES_DATA":loadSeries();
             break;
+        case "LOAD_SERIES_RATING":loadSerieRate();
+            break;
 
     }
 }
@@ -28,7 +30,8 @@ function getRequests($action)
 function postRequests($action)
 {
     switch ($action) {
-
+        case "RATE_SERIE":rateSeries();
+            break;
     }
 }
 
@@ -49,9 +52,8 @@ function errorHandler($status, $code)
 
 function loadSeries()
 {
-    //session_start();
-    //if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["userName"])) {
-     if(true){
+    session_start();
+    if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["username"])) {
         $showID = $_GET["showID"];
         $response = loadSeriesData($showID);
         if ($response["status"] == "SUCCESS") {
@@ -60,6 +62,44 @@ function loadSeries()
             errorHandler($response["status"], $response["code"]);
         }
     } else {
+        session_destroy();
+        header("HTTP/1.1 406 Session not set yet");
+        die("Your session has expired.");
+    }
+}
+
+function rateSeries()
+{
+    session_start();
+    if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["username"])) {
+        $showID = $_POST["showID"];
+        $rate = $_POST["rate"];
+        $username = $_SESSION["username"];
+        $response = rateSeriesData($showID,$username,$rate);
+        if ($response["status"] == "SUCCESS") {
+            echo json_encode($response);
+        } else {
+            errorHandler($response["status"], $response["code"]);
+        }
+    } else {
+        session_destroy();
+        header("HTTP/1.1 406 Session not set yet");
+        die("Your session has expired.");
+    }
+}
+
+function loadSerieRate(){
+    session_start();
+    if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["username"])) {
+        $showID = $_GET["showID"];
+        $response = loadSerieRateData($showID);
+        if ($response["status"] == "SUCCESS") {
+            echo json_encode($response["response"]);
+        } else {
+            errorHandler($response["status"], $response["code"]);
+        }
+
+    }else{
         session_destroy();
         header("HTTP/1.1 406 Session not set yet");
         die("Your session has expired.");

@@ -1,10 +1,11 @@
 <?php
 
-function connect(){
+function connect()
+{
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "proyectoFinal";
+    $dbname = "showify";
 
     $connection = new mysqli($servername, $username, $password, $dbname);
 
@@ -15,7 +16,8 @@ function connect(){
     }
 }
 
-function loadSeriesData($showID){
+function loadSeriesData($showID)
+{
     $conn = connect();
     if ($conn != null) {
         $sql = "SELECT showName, showDescription, showStatus, showYear, showImage, totalEpisodes, currentSeasons
@@ -25,7 +27,7 @@ function loadSeriesData($showID){
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $responseMainData = array("showName" => $row["showName"], "showDescription" => $row["showDescription"], "showStatus" => $row["showStatus"], "showYear" => $row["showYear"],
-                "showImage" => $row["showImage"],"totalEpisodes" => $row["totalEpisodes"],"currentSeasons" => $row["currentSeasons"]);
+                    "showImage" => $row["showImage"], "totalEpisodes" => $row["totalEpisodes"], "currentSeasons" => $row["currentSeasons"]);
             }
             $sql = "SELECT Genres.genre FROM ShowsGenres JOIN Genres on ShowsGenres.genre = Genres.genre WHERE showId = '$showID'";
             $result = $conn->query($sql);
@@ -37,15 +39,60 @@ function loadSeriesData($showID){
                 }
                 $conn->close();
                 return array("status" => "SUCCESS", "responseGenre" => $responseGenreData, "responseSeriesData" => $responseMainData);
-            }else{
+            } else {
                 return array("status" => "SERIES_NOT_FOUND", "code" => 404);
             }
-        }else{
+        } else {
             return array("status" => "SERIES_NOT_FOUND", "code" => 404);
         }
-    }else{
+    } else {
         return array("status" => "INTERNAL_SERVER_ERROR", "code" => 500);
     }
 }
 
-?>
+function rateSeriesData($showID, $username, $rate)
+{
+    $conn = connect();
+    if ($conn != null) {
+        $sql = "SELECT * FROM Ratings WHERE showId = '$showID' AND username = '$username'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            $sql = "UPDATE Ratings SET score = '$rate' WHERE showId = '$showID' AND username = '$username'";
+            if (mysqli_query($conn, $sql)) {
+                $conn->close();
+                return array("status" => "SUCCESS");
+            } else {
+                return array("status" => "INTERNAL_SERVER_ERROR", "code" => 404);
+            }
+        } else {
+            $sql = "INSERT INTO Ratings Values('$username','$showID','$rate')";
+            if (mysqli_query($conn, $sql)) {
+                $conn->close();
+                return array("status" => "SUCCESS");
+            } else {
+                return array("status" => "INTERNAL_SERVER_ERROR", "code" => 404);
+            }
+        }
+    } else {
+        return array("status" => "INTERNAL_SERVER_ERROR", "code" => 500);
+    }
+}
+
+function loadSerieRateData($showID)
+{
+    $conn = connect();
+    if ($conn != null) {
+        $sql = "SELECT AVG(score) as score FROM Ratings WHERE showID = '$showID'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $response = array("score" => $row["score"]);
+            }
+            return array("status" => "SUCCESS", "response" => $response);
+        } else {
+            return array("status" => "INTERNAL_SERVER_ERROR", "code" => 404);
+        }
+    } else {
+        return array("status" => "INTERNAL_SERVER_ERROR", "code" => 500);
+    }
+}

@@ -57,3 +57,7 @@ ul.dropdown-content.select-dropdown li span {
 i.icon-blue {
     color: #448aff;
 }
+
+.swal2-content > .select-wrapper{
+    visibility: collapse !important;
+}
