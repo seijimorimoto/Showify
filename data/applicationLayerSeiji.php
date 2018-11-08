@@ -11,6 +11,10 @@
       $action = $_GET['action'];
       getRequests($action);
       break;
+    case 'POST':
+      $action = $_POST['action'];
+      postRequests($action);
+      break;
   }
 
   # Handles GET requests.
@@ -20,6 +24,17 @@
     switch ($action) {
       case 'COUNTRIES':
         requestCountries();
+        break;
+    }
+  }
+
+  # Handles POST requests.
+  # Parameters:
+  # - $action: String representing an action requested by the front-end.
+  function postRequests($action) {
+    switch ($action) {
+      case 'REGISTER':
+        registerUser();
         break;
     }
   }
@@ -35,6 +50,29 @@
       if ($response['code'] == 406)
         $message = 'There are no countries registered in the database';
       errorHandler($response['status'], $response['code'], $message);
+    }
+  }
+
+  # Handles the registration of a user to the application.
+  function registerUser() {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $firstName = $_POST['firstName'];
+    $lastName = $_POST['lastName'];
+    $email = $_POST['email'];
+    $gender = $_POST['gender'];
+    $country = $_POST['country'];
+
+    $response = attemptRegistration($username, $password, $firstName, $lastName, $email, $gender, $country);
+
+    if ($response['status'] == 'SUCCESS') {
+      session_start();
+      $_SESSION['firstName'] = $firstName;
+      $_SESSION['lastName'] = $lastName;
+      $_SESSION['username'] = $username;
+      echo json_encode($response['response']);
+    } else {
+      errorHandler($response['status'], $response['code'], 'The username provided already exists');
     }
   }
 

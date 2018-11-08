@@ -36,6 +36,10 @@ main {
   vertical-align: bottom;
 }
 
+.invalidSelect {
+  color: #F44336!important;
+}
+
 .loginRegisterSection {
   padding: 0 20%;
 }

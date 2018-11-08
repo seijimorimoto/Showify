@@ -38,4 +38,45 @@
       return array('status' => 'INTERNAL_SERVER_ERROR', 'code' => 500);
     }
   }
+
+  function attemptRegistration($username, $password, $firstName, $lastName, $email, $gender, $country) {
+    $conn = connect();
+
+    if ($conn != null) {
+      $sql = "SELECT username FROM Users WHERE username = ?";
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param('s', $username);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      if ($result->num_rows == 0) {
+        $stmt->close();
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO Users (username, passwd, firstName, lastName, email, gender, country)
+                VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('sssssss', $username, $passwordHash, $firstName, $lastName, $email, $gender, $country);
+        
+        if ($stmt->execute()) {
+          $stmt->close();
+          $conn->close();
+          return array('status' => 'SUCCESS', 'response' => 'Successful user registration');
+        } else {
+          $stmt->close();
+          $conn->close();
+          return array('status' => 'INTERNAL_SERVER_ERROR', 'code' => 500);
+        }
+      }
+
+      else {
+        $stmt->close();
+        $conn->close();
+        return array('status' => 'CONFLICT', 'code' => 409);
+      }
+    }
+
+    else {
+      return array('status' => 'INTERNAL_SERVER_ERROR', 'code' => 500);
+    }
+  }
 ?>
