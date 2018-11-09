@@ -196,7 +196,6 @@ function postComment(){
         die("Your session has expired.");
     }
 }
-
 //Allows a user to erease his own comments
 function deleteComment($_DELETE){
     session_start();

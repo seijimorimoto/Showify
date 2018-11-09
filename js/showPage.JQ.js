@@ -136,7 +136,7 @@ function getFollowState(){
         $("#followbutton").removeClass();
         $("#followbutton").addClass("waves-effect waves-light btn bold blue accent-2");
       }else{
-        $("#followbutton").text("Stop Following");
+        $("#followbutton").text("Unfollow");
         $("#followbutton").removeClass();
         $("#followbutton").addClass("waves-effect waves-light btn bold red darken-2");
       }
@@ -321,7 +321,7 @@ $('#buttonComment').on('click',function(){
     "showID": $.urlParam('show'),
     "content": $('textarea#commentArea').val()
   };
-  if ($('textarea#commentArea').val() != '') {
+  if ($('textarea#commentArea').val() != '' && $('textarea#commentArea').val().length <= 500) {
     $.ajax({
       url: "./data/applicationLayerIvan.php",
       type: "POST",
@@ -354,6 +354,13 @@ $('#buttonComment').on('click',function(){
         }
       }
     });
+  }else{
+    swal({
+      title: 'Error!',
+      text: 'Your review must not be empty or longer than 500 characters',
+      type: 'error',
+      confirmButtonText: 'Ok'
+    })
   }
 });
 
