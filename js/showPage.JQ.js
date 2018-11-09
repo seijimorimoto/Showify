@@ -138,7 +138,7 @@ function getFollowState(){
       }else{
         $("#followbutton").text("Unfollow");
         $("#followbutton").removeClass();
-        $("#followbutton").addClass("waves-effect waves-light btn bold red darken-2");
+        $("#followbutton").addClass("waves-effect waves-light btn bold grey");
       }
     },
     error: function (err) {
@@ -331,6 +331,13 @@ $('#buttonComment').on('click',function(){
         datetime = moment().format('YYYY-MM-DD H:mm:ss');
         var commenHTML = $(`<li class="collection-item"></li>`).html(`<div class="comment">` + `<b><span id="userNameComment">` + data  + `</span>` + ": " +`</b><span class="Commentcontent">` + $('textarea#commentArea').val() + `</span><a class="secondary-content deleteButton"><i class="material-icons icon-blue">close</i></a> </div></div><div class="commentDate">` + datetime + `</div>`);
         $("#commentList").prepend(commenHTML);
+        $('textarea#commentArea').val(undefined);
+        swal({
+          title: 'Congratulations!',
+          text: 'You successfully reviewed this serie!',
+          type: 'success',
+          confirmButtonText: 'Ok'
+        })
       },
       error: function (err) {
         if (err.responseText == "The server is down, we couldn't retrieve data from the data base") {
@@ -398,7 +405,7 @@ $("#commentList").on("click",".deleteButton",function(event){
        });
       swal(
         'Deleted!',
-        'Your file has been deleted.',
+        'Your review has been deleted.',
         'success'
       )
     }
