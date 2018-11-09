@@ -96,3 +96,47 @@ function loadSerieRateData($showID)
         return array("status" => "INTERNAL_SERVER_ERROR", "code" => 500);
     }
 }
+
+function loadFollowStatusData($showID,$username){
+    $conn = connect();
+    if ($conn != null) {
+        $sql = "SELECT * FROM FollowedShows WHERE showID = '$showID' and username = '$username'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            return array("status" => "SUCCESS", "response" => "following");
+        }else{
+            return array("status" => "SUCCESS", "response" => "Not Following");
+        }
+    }else{
+        return array("status" => "INTERNAL_SERVER_ERROR", "code" => 500);
+    }
+}
+
+function changeFollowStatusData($showID,$username){
+    $conn = connect();
+    if ($conn != null) {
+        $sql = "SELECT * FROM FollowedShows WHERE showID = '$showID' and username = '$username'";
+        $result = $conn->query($sql);
+        if($result->num_rows > 0){
+            $sql = "DELETE FROM FollowedShows WHERE showID = '$showID' and username = '$username'";
+            if (mysqli_query($conn, $sql)) {
+                $conn->close();
+                return array("status" => "SUCCESS","response" => "NOT_FOLLOWING");
+            }else{
+                return array("status" => "ERROR");
+            }
+        }else{
+            $sql = "INSERT INTO FollowedShows VALUES ('$username','$showID')";
+            if (mysqli_query($conn, $sql)) {
+                $conn->close();
+                return array("status" => "SUCCESS","response" => "FOLLOWING");
+            }else{
+                return array("status" => "ERROR");
+            }
+        }
+    }else{
+        return array("status" => "INTERNAL_SERVER_ERROR", "code" => 500);
+    }
+}
+
+?>

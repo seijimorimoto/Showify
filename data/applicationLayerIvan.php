@@ -23,6 +23,8 @@ function getRequests($action)
             break;
         case "LOAD_SERIES_RATING":loadSerieRate();
             break;
+        case "LOAD_FOLLOW_DATA":loadFollowStatus();
+            break;
 
     }
 }
@@ -31,6 +33,8 @@ function postRequests($action)
 {
     switch ($action) {
         case "RATE_SERIE":rateSeries();
+            break;
+        case "CHANGE_FOLLOW_STATUS": changeFollowStatus();
             break;
     }
 }
@@ -98,7 +102,42 @@ function loadSerieRate(){
         } else {
             errorHandler($response["status"], $response["code"]);
         }
+    }else{
+        session_destroy();
+        header("HTTP/1.1 406 Session not set yet");
+        die("Your session has expired.");
+    }
+}
 
+function loadFollowStatus(){
+    session_start();
+    if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["username"])) {
+        $showID = $_GET["showID"];
+        $username = $_SESSION["username"];
+        $response = loadFollowStatusData($showID,$username);
+        if ($response["status"] == "SUCCESS") {
+            echo json_encode($response["response"]);
+        } else {
+            errorHandler($response["status"], $response["code"]);
+        }
+    }else{
+        session_destroy();
+        header("HTTP/1.1 406 Session not set yet");
+        die("Your session has expired.");
+    }
+}
+
+function changeFollowStatus(){
+    session_start();
+    if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["username"])) {
+        $showID = $_POST["showID"];
+        $username = $_SESSION["username"];
+        $response = changeFollowStatusData($showID,$username);
+        if ($response["status"] == "SUCCESS") {
+            echo json_encode($response["response"]);
+        } else {
+            errorHandler($response["status"], $response["code"]);
+        }
     }else{
         session_destroy();
         header("HTTP/1.1 406 Session not set yet");

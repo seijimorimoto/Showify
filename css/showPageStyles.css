@@ -61,3 +61,7 @@ i.icon-blue {
 .swal2-content > .select-wrapper{
     visibility: collapse !important;
 }
+
+.material-icons.icon-blue{
+    cursor: pointer;
+}

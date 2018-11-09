@@ -45,6 +45,7 @@ $.ajax({
     });
     $("#showGenre").text(genres);
     getRate();
+    getFollowState();
   },
   error: function (err) {
     if (err.responseText == "The series you requested does not exist.") {
@@ -94,7 +95,71 @@ function getRate(){
       $("#showRating").text(temp);
     },
     error: function (err) {
-      console.log(err);
+      if (err.responseText == "The server is down, we couldn't retrieve data from the data base") {
+        swal({
+          title: 'Error!',
+          text: 'The server is down',
+          type: 'error',
+          confirmButtonText: 'Ok'
+        }).then((_) => {
+          $(location).attr('href', './index.html');
+        });
+      }else{
+          swal({
+            title: 'Error!',
+            text: 'Your session has expired',
+            type: 'error',
+            confirmButtonText: 'Ok'
+          }).then((_) => {
+            $(location).attr('href', './index.html');
+          });
+      }
+    }
+  });
+}
+
+//This function obtains the follo state of the show
+function getFollowState(){
+  let jsonToSend3 = {
+    "action": "LOAD_FOLLOW_DATA",
+    "showID": $.urlParam('show')
+  };
+  $.ajax({
+    url: "./data/applicationLayerIvan.php",
+    type: "GET",
+    data: jsonToSend3,
+    dataType: "json",
+    success: function (data) {
+      if(data == "Not Following"){
+        $("#followbutton").text("Follow");
+        $("#followbutton").removeClass();
+        $("#followbutton").addClass("waves-effect waves-light btn bold blue accent-2");
+      }else{
+        $("#followbutton").text("Stop Following");
+        $("#followbutton").removeClass();
+        $("#followbutton").addClass("waves-effect waves-light btn bold red darken-2");
+      }
+    },
+    error: function (err) {
+      if (err.responseText == "The server is down, we couldn't retrieve data from the data base") {
+        swal({
+          title: 'Error!',
+          text: 'The server is down',
+          type: 'error',
+          confirmButtonText: 'Ok'
+        }).then((_) => {
+          $(location).attr('href', './index.html');
+        });
+      }else{
+        swal({
+          title: 'Error!',
+          text: 'Your session has expired',
+          type: 'error',
+          confirmButtonText: 'Ok'
+        }).then((_) => {
+          $(location).attr('href', './index.html');
+        });
+      }
     }
   });
 }
@@ -131,8 +196,71 @@ $('#rateNow').on('click', function () {
           }).then((_) => {
             $(location).attr('href', './index.html');
           });
+        }else{
+          swal({
+            title: 'Error!',
+            text: 'Your session has expired',
+            type: 'error',
+            confirmButtonText: 'Ok'
+          }).then((_) => {
+            $(location).attr('href', './index.html');
+          });
         }
       }
     });
   }
+});
+
+//This function allows th euser to follow/unfollow a show
+$('#followbutton').on('click', function(){
+  let jsonToSend = {
+    "action": "CHANGE_FOLLOW_STATUS",
+    "showID": $.urlParam('show')
+  };
+  $.ajax({
+    url: "./data/applicationLayerIvan.php",
+    type: "POST",
+    data: jsonToSend,
+    dataType: "json",
+    success: function (data) {
+      console.log(data);
+      if(data == "NOT_FOLLOWING"){
+        swal({
+          title: 'OK!',
+          text: 'You stopped following the show',
+          type: 'success',
+          confirmButtonText: 'Ok'
+        })
+      }else{
+        swal({
+          title: 'Congratulations!',
+          text: 'You are now following this show',
+          type: 'success',
+          confirmButtonText: 'Ok'
+        })
+      }
+      getFollowState();
+    },
+    error: function (err) {
+      if (err.responseText == "The server is down, we couldn't retrieve data from the data base") {
+        swal({
+          title: 'Error!',
+          text: 'The server is down',
+          type: 'error',
+          confirmButtonText: 'Ok'
+        }).then((_) => {
+          $(location).attr('href', './index.html');
+        });
+      } else {
+        swal({
+          title: 'Error!',
+          text: 'Your session has expired',
+          type: 'error',
+          confirmButtonText: 'Ok'
+        }).then((_) => {
+          $(location).attr('href', './index.html');
+        });
+      }
+    }
+  });
 });
