@@ -111,18 +111,10 @@
             <div class="input-field col s12">
               <textarea id="commentArea" class="materialize-textarea"></textarea>
               <label for="commentArea">What do you think about this serie?</label>
-              <button id="buttonComment" class="waves-effect waves-light btn bold blue accent-2">Review!</button>
+              <a class="waves-effect waves-light btn bold blue accent-2" id="buttonComment">Review!</a>
             </div>
           </div>
-          <ul id="commentList" class="collection">
-            <li class="collection-item">
-              <div><span><b>Ivanovic27</b></span>: I think it's really good<a class="secondary-content rejectButton"><i
-                    class="material-icons icon-blue">close</i></a></div>
-            </li>
-            <li class="collection-item">
-              <div><span><b>Seiji</b></span>: I've never seen it</div>
-            </li>
-          </ul>
+          <ul id="commentList" class="collection"></ul>
         </form>
       </div>
     </div>
@@ -135,5 +127,7 @@
     <script src="./js/showPage.JQ.js"></script>
     <!-- Sweet Alert script -->
     <script src="./js/sweetalert2.all.min.js"></script>
+    <!-- Managing Date script -->
+    <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
   </body>
 </html>

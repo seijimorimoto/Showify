@@ -139,4 +139,58 @@ function changeFollowStatusData($showID,$username){
     }
 }
 
+function loadPostsData($showID,$username){
+    $conn = connect();
+    if ($conn != null) {
+        $sql = "SELECT Comments.username as user2, Users.firstName, Users.lastName, Comments.content, Comments.commentDate FROM Comments join Users on Comments.username = Users.username WHERE showId='$showID' ORDER BY Comments.commentDate";
+        $result = $conn->query($sql);
+        $return_arr = array();
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $row_array = array("firstName" => $row["firstName"], "lastName" => $row["lastName"], "content" => $row["content"], "user" => $row["user2"], "commentDate" => $row["commentDate"]);
+                array_push($return_arr, $row_array);
+            }
+            $conn->close();
+            return array("status" => "SUCCESS", "response" => $return_arr, "currentUser" => $username);
+        } else {
+            $conn->close();
+            $return_arr;
+            return array("status" => "SUCCESS", "response" => $return_arr);
+        }
+    }else{
+        return array("status" => "INTERNAL_SERVER_ERROR", "code" => 500);
+    }
+}
+
+function postCommentData($showID,$username,$content){
+    $conn = connect();
+    if ($conn != null) {
+        $sql = "INSERT INTO Comments (content,commentDate,username,showId) VALUES ('$content',NOW(),'$username','$showID')";
+        if (mysqli_query($conn, $sql)) {
+            $conn->close();
+            $response = $username;
+            return array("status" => "SUCCESS","response" => $response);
+        }else{
+            return array("status" => "ERROR");
+        }
+    }else{
+        return array("status" => "INTERNAL_SERVER_ERROR", "code" => 500);
+    }
+}
+
+function deleteCommentData($comment,$date,$user){
+    $conn = connect();
+    if ($conn != null) {
+        $sql = "DELETE FROM Comments WHERE content = '$comment' and commentDate = '$date' and username = '$user'";
+        if (mysqli_query($conn, $sql)) {
+            $conn->close();
+            return array("status" => "SUCCESS");
+        }else{
+            return array("status" => "ERROR");
+        }
+    }else{
+        return array("status" => "INTERNAL_SERVER_ERROR", "code" => 500);
+    }
+}
+
 ?>
