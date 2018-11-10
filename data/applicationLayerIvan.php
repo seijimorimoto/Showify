@@ -14,6 +14,18 @@ switch ($requestMethod) {
     case "POST":$action = $_POST["action"];
         postRequests($action);
         break;
+    case "DELETE":
+        parse_str(file_get_contents('php://input'), $_DELETE);
+        $action = $_DELETE["action"];
+        deleteRequests($action,$_DELETE);
+        break;
+}
+
+function deleteRequests($action,$_DELETE){
+    switch ($action) {
+        case "DELETE_COMMENT": deleteComment($_DELETE);
+        break;
+    }
 }
 
 function getRequests($action)
@@ -25,7 +37,8 @@ function getRequests($action)
             break;
         case "LOAD_FOLLOW_DATA":loadFollowStatus();
             break;
-
+        case "LOAD_COMMENTS":loadPosts();
+            break;
     }
 }
 
@@ -36,9 +49,11 @@ function postRequests($action)
             break;
         case "CHANGE_FOLLOW_STATUS": changeFollowStatus();
             break;
+        case "POST_COMMENT": postComment();
+            break;
     }
 }
-
+//Handles the possible errors in the webpage
 function errorHandler($status, $code)
 {
     switch ($code) {
@@ -53,7 +68,7 @@ function errorHandler($status, $code)
             break;
     }
 }
-
+//Loads the main serie data 
 function loadSeries()
 {
     session_start();
@@ -71,7 +86,7 @@ function loadSeries()
         die("Your session has expired.");
     }
 }
-
+//Allows the user to rate the serie
 function rateSeries()
 {
     session_start();
@@ -91,7 +106,7 @@ function rateSeries()
         die("Your session has expired.");
     }
 }
-
+//Loads the rate a serie has
 function loadSerieRate(){
     session_start();
     if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["username"])) {
@@ -108,7 +123,7 @@ function loadSerieRate(){
         die("Your session has expired.");
     }
 }
-
+//Loads the follow status of a user to a serie
 function loadFollowStatus(){
     session_start();
     if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["username"])) {
@@ -126,7 +141,7 @@ function loadFollowStatus(){
         die("Your session has expired.");
     }
 }
-
+//Allows the user to change his follow status
 function changeFollowStatus(){
     session_start();
     if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["username"])) {
@@ -135,6 +150,62 @@ function changeFollowStatus(){
         $response = changeFollowStatusData($showID,$username);
         if ($response["status"] == "SUCCESS") {
             echo json_encode($response["response"]);
+        } else {
+            errorHandler($response["status"], $response["code"]);
+        }
+    }else{
+        session_destroy();
+        header("HTTP/1.1 406 Session not set yet");
+        die("Your session has expired.");
+    }
+}
+//Loads the comments on a serie
+function loadPosts(){
+    session_start();
+    if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["username"])) {
+        $username = $_SESSION["username"];
+        $showID = $_GET["showID"];
+        $response = loadPostsData($showID,$username);
+        if ($response["status"] == "SUCCESS") {
+            echo json_encode($response);
+        } else {
+            errorHandler($response["status"], $response["code"]);
+        }
+    }else{
+        session_destroy();
+        header("HTTP/1.1 406 Session not set yet");
+        die("Your session has expired.");
+    }
+}
+//Allows a user to comment on a serie's comment section
+function postComment(){
+    session_start();
+    if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["username"])) {
+        $username = $_SESSION["username"];
+        $showID = $_POST["showID"];
+        $content = $_POST["content"];
+        $response = postCommentData($showID,$username,$content);
+        if ($response["status"] == "SUCCESS") {
+            echo json_encode($response["response"]);
+        } else {
+            errorHandler($response["status"], $response["code"]);
+        }
+    }else{
+        session_destroy();
+        header("HTTP/1.1 406 Session not set yet");
+        die("Your session has expired.");
+    }
+}
+//Allows a user to erease his own comments
+function deleteComment($_DELETE){
+    session_start();
+    if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["username"])) {
+        $comment = $_DELETE["comment"];
+        $date = $_DELETE["date"];
+        $user = $_DELETE["user"];
+        $response = deleteCommentData($comment,$date,$user);
+        if ($response["status"] == "SUCCESS") {
+            echo json_encode($response["status"]);
         } else {
             errorHandler($response["status"], $response["code"]);
         }

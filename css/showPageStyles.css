@@ -65,3 +65,8 @@ i.icon-blue {
 .material-icons.icon-blue{
     cursor: pointer;
 }
+
+.commentDate{
+    color:gray;
+    font-size: 12px;
+}
