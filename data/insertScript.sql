@@ -384,7 +384,7 @@ VALUES ('Superstore',
         'img/Superstore.jpg',
         61,
         4);
-INSERT INTO ShowsGenres VALUES (8, "Sitcom");
+INSERT INTO ShowsGenres VALUES (9, "Sitcom");
 
 -- FollowedShows inserts.
 INSERT INTO FollowedShows (username, showId) VALUES ('JLennon', 1);
