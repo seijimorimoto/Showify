@@ -1,3 +1,20 @@
+// AJAX GET request executed when the page loads to check if there is already an active session. If
+// so, then it redirects the browser to the home page.
+$.ajax({
+  url: './data/applicationLayerSeiji.php',
+  type: 'GET',
+  data: { 'action': 'CHECK_SESSION_EXISTS' },
+  ContentType: 'application/json',
+  dataType: 'json',
+  success: function(data) {
+    $(location).attr('href', './home.html');
+  },
+  error: function(err) {
+    // No need to do anything here, since an "error" in this context just means that a session
+    // does not exist; and therefore it is ok to stay on the index.html page.
+  }
+});
+
 // When the login button is clicked, displays an alert on the screen with the form to fill to be
 // able to perform the login.
 $('#loginBtn').on('click', function() {
