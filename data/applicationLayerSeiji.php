@@ -28,6 +28,9 @@
       case 'LOGIN':
         requestLogin();
         break;
+      case 'MOST_FOLLOWED_SHOWS':
+        requestMostFollowedShows();
+        break;
     }
   }
 
@@ -98,6 +101,29 @@
     }
   }
 
+  # Handles the request for getting the most followed shows.
+  function requestMostFollowedShows() {
+    validateSession();
+    $response = retrieveMostFollowedShows();
+
+    if ($response['status'] == 'SUCCESS') {
+      echo json_encode($response['response']);
+    } else {
+      errorHandler($response['status'], $response['code']);
+    }
+  }
+
+  # Validates that a session exists.
+  function validateSession() {
+    session_start();
+
+    if (isset($_SESSION['firstName']) && isset($_SESSION['lastName']) && isset($_SESSION['username'])) {
+      return;
+    } else {
+      errorHandler("UNAUTHORIZED", 401);
+    }
+  }
+
   # Handles errors that occured in the data layer and returns an appropriate message to front-end.
   # Parameters:
   # - $status: Integer representing the status/reason of the error.
@@ -106,6 +132,10 @@
   #   default message for each error code will be used.
   function errorHandler($status, $code, $message = null) {
     switch ($code) {
+      case 401:
+        header("HTTP/1.1 $code $status");
+        if ($message == null)
+          $message = "User not authorized or authenticated";
       case 406:
         header("HTTP/1.1 $code User $status");
         if ($message == null)

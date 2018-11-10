@@ -1,3 +1,5 @@
+CREATE DATABASE Showify;
+
 CREATE TABLE Countries (
   country VARCHAR(255) NOT NULL PRIMARY KEY
 );

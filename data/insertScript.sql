@@ -1,4 +1,4 @@
--- Inserts of all countries in the world.
+-- INSERTS FOR COUNTRIES TABLE.
 
 INSERT INTO Countries (country) VALUES ("Afghanistan");
 INSERT INTO Countries (country) VALUES ("Albania");
@@ -196,19 +196,117 @@ INSERT INTO Countries (country) VALUES ("Yemen");
 INSERT INTO Countries (country) VALUES ("Zambia");
 INSERT INTO Countries (country) VALUES ("Zimbabwe");
 
---Genre inserts
-INSERT INTO Genres values ("Drama");
-INSERT INTO Genres values ("Medical Drama");
-INSERT INTO Genres values ("Comedy");
+
+-- INSERTS FOR GENRES TABLE.
+INSERT INTO Genres VALUES ("Anime");
+INSERT INTO Genres VALUES ("Action");
+INSERT INTO Genres VALUES ("Adventure");
+INSERT INTO Genres VALUES ("Comedy");
+INSERT INTO Genres VALUES ("Drama");
+INSERT INTO Genres VALUES ("Fantasy");
+INSERT INTO Genres VALUES ("Martial Arts");
+INSERT INTO Genres VALUES ("Medical Drama");
+INSERT INTO Genres VALUES ("School");
+INSERT INTO Genres VALUES ("Shounen");
+INSERT INTO Genres VALUES ("Super Power");
 
 
--- Here start series inserts
--- The Good Doctor insert
-INSERT INTO Shows (showName,showDescription,showStatus,showYear,showImage,totalEpisodes,currentSeasons) values ("The Good Doctor","Shaun Murphy, a young surgeon with autism and Savant syndrome, is recruited into the surgical unit of a prestigious hospital. Shaun Murphy, a young surgeon with autism and savant syndrome, relocates from a quiet country life to join a prestigious hospital surgical unit.","In emission","2017","img/The_Good_Doctor.jpg",24,2);
-INSERT INTO ShowsGenres values(1,"Drama");
-INSERT INTO ShowsGenres values(1,"Medical Drama");
+-- INSERTS FOR USERS TABLE.
+-- Won't be able to log in as these users (since password won't be hashed), but these inserts are
+-- needed to make inserts into the FollowedShows table and to be able to test the retrieval of the
+-- most followed shows.
+INSERT INTO Users (username, passwd, firstName, lastName, email, gender, country)
+VALUES ('JLennon', 'x', 'John', 'Lennon', 'john@lennon.com', 'Male', 'United Kingdom');
 
+
+-- INSERTS FOR SHOWS AND SHOWSGENRES TABLES.
+-- The Good Doctor
+INSERT INTO Shows
+(showName, showDescription, showStatus, showYear, showImage, totalEpisodes, currentSeasons)
+VALUES ("The Good Doctor",
+        "Shaun Murphy, a young surgeon with autism and Savant syndrome, is recruited into the
+        surgical unit of a prestigious hospital. Shaun Murphy, a young surgeon with autism and
+        savant syndrome, relocates from a quiet country life to join a prestigious hospital surgical
+        unit.",
+        "In emission",
+        "2017",
+        "img/The_Good_Doctor.jpg",
+        24,
+        2);
+INSERT INTO ShowsGenres VALUES(1, "Drama");
+INSERT INTO ShowsGenres VALUES(1, "Medical Drama");
 
 -- The Big Bang Theory
-INSERT INTO Shows (showName,showDescription,showStatus,showYear,showImage,totalEpisodes,currentSeasons) values ("The Big Bang Theory","The Big Bang Theory is a comedy about brilliant physicists, Leonard and Sheldon, who are the kind of beautiful minds that understand how the universe works. But none of that genius helps them interact with people, especially women. All this begins to change when a free-spirited beauty named Penny moves in next door.","In emission","2007","img/The_Big_Bang.jpg",262,12);
-INSERT INTO ShowsGenres values(2,"Comedy");
+INSERT INTO Shows
+(showName, showDescription, showStatus, showYear, showImage, totalEpisodes, currentSeasons)
+VALUES ("The Big Bang Theory",
+        "The Big Bang Theory is a comedy about brilliant physicists, Leonard and Sheldon, who are
+        the kind of beautiful minds that understand how the universe works. But none of that genius
+        helps them interact with people, especially women. All this begins to change when a
+        free-spirited beauty named Penny moves in next door.",
+        "In emission",
+        "2007",
+        "img/The_Big_Bang.jpg",
+        262,
+        12);
+INSERT INTO ShowsGenres VALUES(2, "Comedy");
+
+-- Boku No Hero Academia
+INSERT INTO Shows
+(showName, showDescription, showStatus, showYear, showImage, totalEpisodes, currentSeasons)
+VALUES ('Boku No Hero Academia',
+        'The appearance of "quirks," newly discovered super powers, has been steadily increasing
+        over the years, with 80 percent of humanity possessing various abilities from manipulation
+        of elements to shapeshifting. This leaves the remainder of the world completely powerless,
+        and Izuku Midoriya is one such individual. Since he was a child, the ambitious middle
+        schooler has wanted nothing more than to be a hero. Izuku\'s unfair fate leaves him admiring
+        heroes and taking notes on them whenever he can. But it seems that his persistence has borne
+        some fruit: Izuku meets the number one hero and his personal idol, All Might. All Might\'s
+        quirk is a unique ability that can be inherited, and he has chosen Izuku to be his
+        successor! Enduring many months of grueling training, Izuku enrolls in UA High, a
+        prestigious high school famous for its excellent hero training program, and this year\'s
+        freshmen look especially promising. With his bizarre but talented classmates and the looming
+        threat of a villainous organization, Izuku will soon learn what it really means to be a
+        hero.',
+        'Completed',
+        2016,
+        'img/BokuNoHeroAcademia.jpg',
+        67,
+        3);
+INSERT INTO ShowsGenres VALUES (3, "Anime");
+INSERT INTO ShowsGenres VALUES (3, "Action");
+INSERT INTO ShowsGenres VALUES (3, "Comedy");
+INSERT INTO ShowsGenres VALUES (3, "School");
+INSERT INTO ShowsGenres VALUES (3, "Shounen");
+INSERT INTO ShowsGenres VALUES (3, "Super Power");
+
+-- Dragon Ball Super
+INSERT INTO Shows
+(showName, showDescription, showStatus, showYear, showImage, totalEpisodes, currentSeasons)
+VALUES ('Dragon Ball Super',
+        'Seven years after the events of Dragon Ball Z, Earth is at peace, and its people live free
+        from any dangers lurking in the universe. However, this peace is short-lived; a sleeping
+        evil awakens in the dark reaches of the galaxy: Beerus, the ruthless God of Destruction.
+        Disturbed by a prophecy that he will be defeated by a "Super Saiyan God," Beerus and his
+        angelic attendant Whis start searching the universe for this mysterious being. Before long,
+        they reach Earth where they encounter Son Goku, one of the planet\'s mightiest warriors, and
+        his similarly powerful friends.',
+        'Completed',
+        2015,
+        'img/DragonBallSuper.jpg',
+        131,
+        5);
+INSERT INTO ShowsGenres VALUES (4, "Anime");
+INSERT INTO ShowsGenres VALUES (4, "Action");
+INSERT INTO ShowsGenres VALUES (4, "Adventure");
+INSERT INTO ShowsGenres VALUES (4, "Comedy");
+INSERT INTO ShowsGenres VALUES (4, "Fantasy");
+INSERT INTO ShowsGenres VALUES (4, "Martial Arts");
+INSERT INTO ShowsGenres VALUES (4, "Shounen");
+INSERT INTO ShowsGenres VALUES (4, "Super Power");
+
+-- FollowedShows inserts.
+INSERT INTO FollowedShows (username, showId) VALUES ('JLennon', 1);
+INSERT INTO FollowedShows (username, showId) VALUES ('JLennon', 2);
+INSERT INTO FollowedShows (username, showId) VALUES ('JLennon', 3);
+INSERT INTO FollowedShows (username, showId) VALUES ('JLennon', 4);
