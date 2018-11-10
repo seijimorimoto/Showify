@@ -386,6 +386,21 @@ VALUES ('Superstore',
         4);
 INSERT INTO ShowsGenres VALUES (9, "Sitcom");
 
+-- Dr House
+INSERT INTO Shows
+(showName, showDescription, showStatus, showYear, showImage, totalEpisodes, currentSeasons)
+VALUES ('House M. D.',
+        'House (also called House, M.D.) is an American television medical drama that originally ran on the Fox network for eight seasons. The series main character is Dr Gregory House, an unconventional, misanthropic medical genius who, despite his dependence on pain medication, leads a team of diagnosticians at the fictional Princeton Plainsboro Teaching Hospital in New Jersey.',
+        'Completed',
+        2004,
+        'img/House.jpg',
+        177,
+        8);
+INSERT INTO ShowsGenres VALUES (10, "Medical Drama");
+
+
+
+
 -- FollowedShows inserts.
 INSERT INTO FollowedShows (username, showId) VALUES ('JLennon', 1);
 INSERT INTO FollowedShows (username, showId) VALUES ('JLennon', 2);
