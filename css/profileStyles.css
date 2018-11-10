@@ -1,0 +1,20 @@
+.title{
+    padding-top:5px;
+    background-color: rgb(227, 239, 250);
+    padding-bottom: 25px
+}
+
+.little-margin{
+    padding:4px;
+    /*background-color: rgb(73, 114, 117)*/
+    background-color: #448aff;
+}
+
+.spaceBar{
+    margin-top:5px;
+}
+
+.userInformation{
+    margin-top:10px;
+    font-size:20px;
+}
