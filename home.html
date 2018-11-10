@@ -19,10 +19,10 @@
     <!-- Navigation menu -->
     <nav class="blue accent-2">
       <div class="nav-wrapper">
-        <div class="row navRow">
+        <div class="row navRow blue accent-2">
           <div class="col s12 m5 l2 center">
             <a href="#" data-target="mobile-nav" class="sidenav-trigger left"><i class="material-icons">menu</i></a>
-            <img class="logo" src="img/logo.png" alt="Showify logo">
+            <a href="./home.html"><img class="logo clickable" src="img/logo.png" alt="Showify logo"></a>
           </div>
           <div class="s12 col m7 l5">
             <form class="search-input">
@@ -34,8 +34,8 @@
           </div>
           <div class="col l5 hide-on-med-and-down">
             <ul class="right">
-              <li><a href="#"><i class="material-icons left">star</i>Followed Shows</a></li>
-              <li><a href="#"><i class="material-icons left">person</i>Profile</a></li>
+              <li><a href="./followedShows.html"><i class="material-icons left">star</i>Followed Shows</a></li>
+              <li><a href="./profile.html"><i class="material-icons left">person</i>Profile</a></li>
               <li><a href="#"><i class="material-icons left">exit_to_app</i>Logout</a></li>
             </ul>
           </div>
@@ -45,8 +45,9 @@
 
     <!-- Elements that appear in the side navigation menu when it is triggered -->
     <ul class="sidenav" id="mobile-nav">
-      <li><a href="#"><i class="material-icons left">star</i>Followed Shows</a></li>
-      <li><a href="#"><i class="material-icons left">person</i>Profile</a></li>
+      <li><a href="./home.html"><i class="material-icons left">home</i>Home</a></li>
+      <li><a href="./followedShows.html"><i class="material-icons left">star</i>Followed Shows</a></li>
+      <li><a href="./profile.html"><i class="material-icons left">person</i>Profile</a></li>
       <li><a href="#"><i class="material-icons left">exit_to_app</i>Logout</a></li>
     </ul>
 

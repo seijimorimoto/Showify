@@ -1,14 +1,28 @@
+/* Alphabetically ordered rules targeting elements by their HTML tag */
+a {
+  outline: none;
+}
+
+input[id="search"] {
+  height: 45px !important; 
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+nav .input-field label {
+  top: -8px;
+  left: 0;
+}
+
+
+/* Alphabetically ordered rules targeting elements by their classes */
+
 .bold {
   font-weight: bold;
 }
 
 .clickable {
   cursor: pointer;
-}
-
-.navRow {
-  background-color: #438AFE;
-  padding: 20px 0px;
 }
 
 .emptySpace {
@@ -21,10 +35,8 @@
   vertical-align: middle;
 }
 
-input[id="search"] {
-  height: 45px !important; 
-  margin-top: 10px;
-  border-radius: 5px;
+.navRow {
+  padding: 20px 0px;
 }
 
 .search-input {
@@ -34,15 +46,16 @@ input[id="search"] {
   border-radius: 5px;
 }
 
-nav .input-field label {
-  top: -8px;
-  left: 0;
-}
+
+/* Alphabetically ordered rules targeting elements by their id */
 
 #search {
   border-radius: 5px;
   outline: none;
 }
+
+
+/* Media queries */
 
 @media only screen and (min-width: 601px) {
   nav {
