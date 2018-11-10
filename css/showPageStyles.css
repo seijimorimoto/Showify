@@ -1,3 +1,66 @@
+/* Alphabetically ordered rules targeting elements by their HTML tag */
+
+h2 {
+    display: inline-block;
+}
+
+i.icon-blue {
+    color: #448aff;
+}
+
+ul.dropdown-content.select-dropdown li span {
+    color: #448aff; /* no need for !important :) */
+}
+
+
+/* Alphabetically ordered rules targeting elements by their classes */
+
+.commentDate{
+    color:gray;
+    font-size: 12px;
+}
+
+.input-field textarea:focus + label {
+    color: #448aff !important;
+}
+
+.little-margin{
+    padding:4px;
+    background-color: #448aff;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.material-icons.icon-blue{
+    cursor: pointer;
+}
+
+.row .input-field textarea:focus {
+    border-bottom: 1px solid #448aff !important;
+    box-shadow: 0 1px 0 0 #448aff !important
+}
+
+.showInfo{
+    padding-top: 5px;
+}
+
+.swal2-content > .select-wrapper{
+    visibility: collapse !important;
+}
+
+.title{
+    padding-top:5px;
+    background-color: #e3effa;
+    padding-bottom: 10px
+}
+
+
+/* Alphabetically ordered rules targeting elements by their id */
+
 #followbutton{
     margin-left: 20px;
     margin-top: 20px;
@@ -8,65 +71,10 @@
     margin-bottom: 5px;
 }
 
-#showImage{
-    vertical-align: middle;
-}
-
-.showInfo{
-    padding-top: 5px;
-}
-
-h2 {
-      display: inline-block;
-}
-.main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 #scoreSeries{
     padding-right:5px;
 }
 
-.title{
-    padding-top:5px;
-    background-color: rgb(227, 239, 250);
-    padding-bottom: 10px
-}
-
-.little-margin{
-    padding:4px;
-    /*background-color: rgb(73, 114, 117)*/
-    background-color: #448aff;
-}
-
-ul.dropdown-content.select-dropdown li span {
-    color: #448aff; /* no need for !important :) */
-}
-
-.input-field textarea:focus + label {
-    color: #448aff !important;
-}
-  
-.row .input-field textarea:focus {
-    border-bottom: 1px solid #448aff !important;
-    box-shadow: 0 1px 0 0 #448aff !important
-}
-
-i.icon-blue {
-    color: #448aff;
-}
-
-.swal2-content > .select-wrapper{
-    visibility: collapse !important;
-}
-
-.material-icons.icon-blue{
-    cursor: pointer;
-}
-
-.commentDate{
-    color:gray;
-    font-size: 12px;
+#showImage{
+    vertical-align: middle;
 }

@@ -1,3 +1,22 @@
+// AJAX GET request executed when the page loads to check if there is already an active session. If
+// so, then it redirects the browser to the home page.
+$.ajax({
+  url: './data/applicationLayerSeiji.php',
+  type: 'GET',
+  data: { 'action': 'CHECK_SESSION_EXISTS' },
+  ContentType: 'application/json',
+  dataType: 'json',
+  success: function(data) {
+    $(location).attr('href', './home.html');
+  },
+  error: function(err) {
+    // No need to do anything here, since an "error" in this context just means that a session
+    // does not exist; and therefore it is ok to stay on the index.html page.
+  }
+});
+
+// When the login button is clicked, displays an alert on the screen with the form to fill to be
+// able to perform the login.
 $('#loginBtn').on('click', function() {
   swal({
     allowEscapeKey: false,
@@ -31,7 +50,10 @@ $('#loginBtn').on('click', function() {
         if (validateLogin()) {
           tryLogin()
             .then(result => { resolve(true); })
-            .catch(error => { swal.showValidationMessage(`Request failed: ${error.message}`); resolve(false); });
+            .catch(error => {
+              swal.showValidationMessage(`Request failed: ${error.message}`);
+              resolve(false);
+            });
         } else {
           swal.showValidationMessage('Some fields are not filled correctly');
           resolve(false);
@@ -59,6 +81,8 @@ $('#loginBtn').on('click', function() {
   });
 });
 
+// When the registration button is clicked, displays an alert on the screen with the form to fill to
+// be able to perform the registration.
 $('#registerBtn').on('click', function() {
   swal({
     allowEscapeKey: false,
@@ -117,10 +141,10 @@ $('#registerBtn').on('click', function() {
     </div>
     `,
     onOpen: function() {
-      // Initialize select elements for Materialize to work.
+      // Initializes 'select' elements for Materialize to work.
       $('select').formSelect();
 
-      // Remove select element that appears for no reason.
+      // Removes 'select' element that appears for no reason.
       let selectTypeElements = $('.select-wrapper');
       $(selectTypeElements[2]).remove();
 
@@ -133,8 +157,8 @@ $('#registerBtn').on('click', function() {
             $($countrySelect).append(newHtml);
           }
 
-          // Re-initialize select elements so that the options appended to the #registerCountry
-          // select element are displayed.
+          // Re-initialize 'select' elements so that the options appended to the #registerCountry
+          // 'select' element are displayed.
           $('select').formSelect();
         }
       );
@@ -172,6 +196,8 @@ $('#registerBtn').on('click', function() {
   });
 });
 
+// Executes an AJAX GET request to obtain the list of all the countries the world. Performs the
+// callback function passed as a parameter if the AJAX call is successful.
 function retrieveCountryList(callback = function(countryList) {}) {
   $.ajax({
     url: './data/applicationLayerSeiji.php',
@@ -183,11 +209,17 @@ function retrieveCountryList(callback = function(countryList) {}) {
       callback(data);
     },
     error: function(err) {
-      console.log(err);
+      swal({
+        text: 'The server is down. Try again later.',
+        title: 'Error!',
+        type: "error"
+      });
     }
   });
 }
 
+// Returns true if all the fields in the login form are filled correctly. Otherwise, returns false
+// and displays on the screen the reasons that caused the validation to fail.
 function validateLogin() {
   let $username = $('#loginUsername');
   let $labelUsername = $('#labelUsername');
@@ -216,6 +248,8 @@ function validateLogin() {
   return isValid;
 }
 
+// Returns true if all the fields in the registration form are filled correctly. Otherwise, returns
+// false and displays on the screen the reasons that caused the validation to fail.
 function validateRegistration() {
   let $firstName = $('#registerFirstName');
   let $labelFirstName = $('#labelFirstName');
@@ -313,6 +347,8 @@ function validateRegistration() {
   return isValid;
 }
 
+// Executes an AJAX GET request to verify if the login credentials written by the user were correct.
+// Returns a resolved or rejected Promise object based on the result of the AJAX call.
 function tryLogin() {
   let username = $('#loginUsername').val();
   let password = $('#loginPassword').val();
@@ -342,6 +378,8 @@ function tryLogin() {
   return promise;
 }
 
+// Executes an AJAX POST request to register a new user into the application with the data provided
+// by the user. Returns a resolved or rejected Promise object based on the result of the AJAX call.
 function tryRegistration() {
   let firstName = $('#registerFirstName').val();
   let lastName = $('#registerLastName').val();

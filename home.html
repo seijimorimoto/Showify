@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Proprietary CSS -->
     <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/home.css">
     <!-- Let the browser know the website is optimized for mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Specify the character encoding: UTF-8 -->
+    <meta charset="UTF-8">
   </head>
 
   <body>
@@ -16,10 +19,10 @@
     <!-- Navigation menu -->
     <nav class="blue accent-2">
       <div class="nav-wrapper">
-        <div class="row navRow">
+        <div class="row navRow blue accent-2">
           <div class="col s12 m5 l2 center">
             <a href="#" data-target="mobile-nav" class="sidenav-trigger left"><i class="material-icons">menu</i></a>
-            <img class="logo" src="img/logo.png" alt="Showify logo">
+            <a href="./home.html"><img class="logo clickable" src="img/logo.png" alt="Showify logo"></a>
           </div>
           <div class="s12 col m7 l5">
             <form class="search-input">
@@ -31,9 +34,9 @@
           </div>
           <div class="col l5 hide-on-med-and-down">
             <ul class="right">
-              <li><a href="#"><i class="material-icons left">star</i>Followed Shows</a></li>
-              <li><a href="#"><i class="material-icons left">person</i>Profile</a></li>
-              <li><a href="#"><i class="material-icons left">exit_to_app</i>Logout</a></li>
+              <li><a href="./followedShows.html"><i class="material-icons left">star</i>Followed Shows</a></li>
+              <li><a href="./profile.html"><i class="material-icons left">person</i>Profile</a></li>
+              <li><a class="logout" href="#"><i class="material-icons left">exit_to_app</i>Logout</a></li>
             </ul>
           </div>
         </div>
@@ -42,9 +45,10 @@
 
     <!-- Elements that appear in the side navigation menu when it is triggered -->
     <ul class="sidenav" id="mobile-nav">
-      <li><a href="#"><i class="material-icons left">star</i>Followed Shows</a></li>
-      <li><a href="#"><i class="material-icons left">person</i>Profile</a></li>
-      <li><a href="#"><i class="material-icons left">exit_to_app</i>Logout</a></li>
+      <li><a href="./home.html"><i class="material-icons left">home</i>Home</a></li>
+      <li><a href="./followedShows.html"><i class="material-icons left">star</i>Followed Shows</a></li>
+      <li><a href="./profile.html"><i class="material-icons left">person</i>Profile</a></li>
+      <li><a class="logout" href="#"><i class="material-icons left">exit_to_app</i>Logout</a></li>
     </ul>
 
     <!-- Empty space between the navigation menu and the rest of the content of the page -->
@@ -53,16 +57,24 @@
     <!-- Here starts the content of the page -->
     <div class="container">
       <div class="section">
-        <h4 class="header center-align">Most Followed Shows</h1>
+        <h4 class="header center-align bold blue-text text-accent-3">Most Followed Shows</h4>
       </div>
-    </div> 
+
+      <div class="section">
+          <div id="mostFollowedShows" class="row">
+          </div>
+        </div>
+    </div>
 
     <!-- Importing JQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
     <!--Importing Materialize.js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <!-- Sweet Alert 2 scripts and stylesheets -->
+    <script src="./js/sweetalert2.all.min.js"></script>
     <!-- Proprietary scripts -->
+    <script src="./js/common.js"></script>
     <script src="./js/home.js"></script>
   </body>
 </html>

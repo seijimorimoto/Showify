@@ -1,6 +1,6 @@
-document.addEventListener('DOMContentLoaded', function () {
-  var elems = document.querySelectorAll('.sidenav');
-  var instances = M.Sidenav.init(elems);
+// Initializes the sidenav component when the page loads.
+$(document).ready(function(){
+  $('.sidenav').sidenav();
 });
 
 //Allows the use of select.

@@ -1,4 +1,6 @@
-html, body, #body {
+/* Alphabetically ordered rules targeting elements by their HTML tag */
+
+body, html, #body {
   width: 100%;
   height: 100%!important; /* Marked as important to override behavior imported from Sweet Alert 2 */
   margin: 0;
@@ -8,6 +10,9 @@ html, body, #body {
 main {
   height: 45.5%;
 }
+
+
+/* Alphabetically ordered rules targeting elements by their classes */
 
 .btn.waves-effect.waves-light#registerBtn {
   border: 1.2px solid #448aff;
@@ -63,6 +68,9 @@ main {
   height: inherit; 
 }
 
+
+/* Alphabetically ordered rules targeting elements by their id */
+
 #loginBtn {
   margin-bottom: 20px;
   margin-top: 30px;
@@ -75,6 +83,9 @@ main {
   margin-right: auto;
   padding-bottom: 10px;
 }
+
+
+/* Media queries */
 
 @media only screen and (min-width: 993px) {
   main {
