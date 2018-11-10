@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Proprietary CSS -->
     <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/search.css">
     <!-- Let the browser know the website is optimized for mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!-- Specify the character encoding: UTF-8 -->
@@ -57,11 +57,48 @@
     <!-- Here starts the content of the page -->
     <div class="container">
       <div class="section">
-        <h4 class="header center-align bold blue-text text-accent-3">Most Followed Shows</h4>
+        <h4 class="header center-align bold blue-text text-accent-3">Search</h4>
       </div>
 
       <div class="section">
-        <div id="mostFollowedShows" class="row">
+        <div id="searchCriteriaSection" class="blue accent-2">
+          <div class="row">
+            <div class="col s12">
+              <form class="search-input">
+                <div class="input-field">
+                  <input id="mainSearch" type="search" placeholder="Type a show...">
+                  <label id="mainSearchLabel" class="label-icon" for="search"><i class="material-icons">search</i></label>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div id="filterSection" class="row">
+            <div class="col s12 m5">
+              <div class="input-field">
+                <select>
+                  <option value="Any" >Any</option>
+                  <option value="1">Action</option>
+                  <option value="2">Adventure</option>
+                  <option value="3">Anime</option>
+                </select>
+                <label class="white-text">Genre</label>
+              </div>
+            </div>
+            <div class="col s12 m5">
+              <div class="input-field">
+                <select>
+                  <option value="Any" >Any</option>
+                  <option value="1">2001</option>
+                  <option value="2">2002</option>
+                  <option value="3">2003</option>
+                </select>
+                <label class="white-text">Year</label>
+              </div>
+            </div>
+            <div class="col s12 m2">
+              <a id="searchBtn" href="#" class="waves-effect waves-light btn bold blue accent-1">Go</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -75,6 +112,6 @@
     <script src="./js/sweetalert2.all.min.js"></script>
     <!-- Proprietary scripts -->
     <script src="./js/common.js"></script>
-    <script src="./js/home.js"></script>
+    <script src="./js/search.js"></script>
   </body>
 </html>
