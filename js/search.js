@@ -59,9 +59,22 @@ function createSelectOptionHtml(optionValue) {
   return `<option value="${optionValue}">${optionValue}</option>`;
 }
 
+// Checks whether the URL has GET parameters, in which case performs a search with the 'show'
+// parameter found in the URL.
+let showName = $.urlParam('show');
+if (showName != null) {
+  $('#mainSearch').val(showName);
+  searchShows();
+}
+
 // When the search button is clicked, an AJAX GET request is triggered for retrieving the shows that
 // matched the search criteria.
 $('#searchBtn').on('click', function() {
+  searchShows();
+});
+
+// Performs an AJAX GET request for retrieving the shows that match the search criteria.
+function searchShows() {
   let searchPattern = $('#mainSearch').val().trim();
   let genre = $('#genres').val();
   let year = $('#years').val();
@@ -105,7 +118,7 @@ $('#searchBtn').on('click', function() {
       }).then((_) => $(location).attr('href', './index.html'));
     }
   });
-});
+}
 
 // When any of the searched shows (displayed as cards) is clicked, redirects the browser to the page
 // corresponding to that specific show.

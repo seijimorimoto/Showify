@@ -1,3 +1,6 @@
+// IMPORTANT NOTE: INCLUDE THIS JAVASCRIPT FILE AFTER THE common.js FILE IN YOUR HTML, OTHERWISE IT
+// WON'T WORK APPROPRIATELY, SINCE IT USES A FUNCTION FROM THAT FILE.
+
 // Initializes the sidenav component when the page loads.
 $(document).ready(function(){
   $('.sidenav').sidenav();
@@ -7,15 +10,6 @@ $(document).ready(function(){
 $(document).ready(function () {
   $('select').formSelect();
 });
-
-//This function allows you to get the parameters inside a URL
-$.urlParam = function (name) {
-  var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-  if (results == null) {
-    return null;
-  }
-  return decodeURI(results[1]) || 0;
-}
 
 //Here all the series information is loaded
 let jsonToSend = {

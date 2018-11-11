@@ -38,3 +38,12 @@ function createShowHtml(show) {
             </div>
           </div>`;
 }
+
+// Function that retrieves the GET parameters inside a URL.
+$.urlParam = function (name) {
+  var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+  if (results == null) {
+    return null;
+  }
+  return decodeURI(results[1]) || 0;
+}
