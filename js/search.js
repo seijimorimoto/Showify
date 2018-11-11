@@ -1,5 +1,5 @@
 // IMPORTANT NOTE: INCLUDE THIS JAVASCRIPT FILE AFTER THE common.js FILE IN YOUR HTML, OTHERWISE IT
-// WON'T WORK APPROPRIATELY, SINCE IT USES A FUNCTION FROM THAT FILE.
+// WON'T WORK APPROPRIATELY, SINCE IT USES FUNCTIONS FROM THAT FILE.
 
 // Initializes the 'select' components when the page loads.
 $(document).ready(function(){
@@ -22,11 +22,7 @@ $.ajax({
     $('select').formSelect();
   },
   error: function(err) {
-    swal({
-      text: 'The server is down',
-      title: 'Error!',
-      type: "error"
-    }).then((_) => $(location).attr('href', './index.html'));
+    ajaxErrorHandler(err);
   }
 });
 
@@ -46,11 +42,7 @@ $.ajax({
     $('select').formSelect();
   },
   error: function(err) {
-    swal({
-      text: 'The server is down',
-      title: 'Error!',
-      type: "error"
-    }).then((_) => $(location).attr('href', './index.html'));
+    ajaxErrorHandler(err);
   }
 });
 
@@ -111,11 +103,7 @@ function searchShows() {
       }
     },
     error: function(err) {
-      swal({
-        text: 'The server is down',
-        title: 'Error!',
-        type: "error"
-      }).then((_) => $(location).attr('href', './index.html'));
+      ajaxErrorHandler(err);
     }
   });
 }

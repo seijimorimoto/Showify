@@ -34,6 +34,9 @@
       case 'COUNTRIES':
         requestCountries();
         break;
+      case 'FOLLOWED_SHOWS':
+        requestFollowedShows();
+        break;
       case 'GENRES':
         requestGenres();
         break;
@@ -187,6 +190,18 @@
   function requestYears() {
     validateSession();
     $response = retrieveYears();
+
+    if ($response['status'] == 'SUCCESS') {
+      echo json_encode($response['response']);
+    } else {
+      errorHandler($response['status'], $response['code']);
+    }
+  }
+
+  # Handles the request for retrieving the shows followed by the logged in user.
+  function requestFollowedShows() {
+    validateSession();
+    $response = retrieveFollowedShows($_SESSION['username']);
 
     if ($response['status'] == 'SUCCESS') {
       echo json_encode($response['response']);

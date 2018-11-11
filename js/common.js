@@ -59,3 +59,23 @@ $('#search').keypress(function(event) {
     $(location).attr('href', url);
   }
 });
+
+// Function that handles an AJAX error based on its HTTP status code.
+function ajaxErrorHandler(err) {
+  switch (err.status) {
+    case 401:
+      swal({
+        text: 'Your session has expired',
+        title: 'Error!',
+        type: "error"
+      }).then((_) => $(location).attr('href', './index.html'));
+      break;
+    case 500:
+      swal({
+        text: 'The server is down',
+        title: 'Error!',
+        type: "error"
+      }).then((_) => $(location).attr('href', './index.html'));
+      break;
+  }
+}
