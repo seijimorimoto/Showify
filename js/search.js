@@ -104,7 +104,7 @@ function searchShows() {
         }
       } else {
         let noShowsHtml = `<h5 class="center-align">
-                            <i>There were no results for '${searchPattern}'</i>
+                            <i>No results were found</i>
                             &#x1F622
                           </h5>`;
         $searchResults.append(noShowsHtml);
