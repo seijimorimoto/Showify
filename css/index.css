@@ -7,11 +7,6 @@ body, html, #body {
   padding: 0;
 }
 
-main {
-  height: 45.5%;
-}
-
-
 /* Alphabetically ordered rules targeting elements by their classes */
 
 .btn.waves-effect.waves-light#registerBtn {
@@ -49,14 +44,6 @@ main {
   padding: 0 20%;
 }
 
-.page-footer {
-  bottom: 0;
-  height: 9%;
-  left: 0;
-  position: absolute;
-  right: 0;
-}
-
 .uniqueRow {
   height: 100%;
   margin: 0;
@@ -71,6 +58,10 @@ main {
 
 /* Alphabetically ordered rules targeting elements by their id */
 
+#leftSection {
+  height: 50%;
+}
+
 #loginBtn {
   margin-bottom: 20px;
   margin-top: 30px;
@@ -84,11 +75,14 @@ main {
   padding-bottom: 10px;
 }
 
+#rightSection {
+  height: 50%;
+}
 
 /* Media queries */
 
-@media only screen and (min-width: 993px) {
-  main {
-    height: 91%;
-  }
+@media only screen and (min-width: 992px) {
+  #leftSection, #rightSection {
+    height: 100%;
+  } 
 }

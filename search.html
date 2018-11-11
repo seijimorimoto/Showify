@@ -16,91 +16,100 @@
 
   <body>
 
-    <!-- Navigation menu -->
-    <nav class="blue accent-2">
-      <div class="nav-wrapper">
-        <div class="row navRow blue accent-2">
-          <div class="col s12 m5 l2 center">
-            <a href="#" data-target="mobile-nav" class="sidenav-trigger left"><i class="material-icons">menu</i></a>
-            <a href="./home.html"><img class="logo clickable" src="img/logo.png" alt="Showify logo"></a>
-          </div>
-          <div class="s12 col m7 l5">
-            <form class="search-input">
-              <div class="input-field">
-                <input id="search" type="search" required>
-                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-              </div>
-            </form>
-          </div>
-          <div class="col l5 hide-on-med-and-down">
-            <ul class="right">
-              <li><a href="./followedShows.html"><i class="material-icons left">star</i>Followed Shows</a></li>
-              <li><a href="./profile.html"><i class="material-icons left">person</i>Profile</a></li>
-              <li><a class="logout" href="#"><i class="material-icons left">exit_to_app</i>Logout</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Elements that appear in the side navigation menu when it is triggered -->
-    <ul class="sidenav" id="mobile-nav">
-      <li><a href="./home.html"><i class="material-icons left">home</i>Home</a></li>
-      <li><a href="./followedShows.html"><i class="material-icons left">star</i>Followed Shows</a></li>
-      <li><a href="./profile.html"><i class="material-icons left">person</i>Profile</a></li>
-      <li><a class="logout" href="#"><i class="material-icons left">exit_to_app</i>Logout</a></li>
-    </ul>
-
-    <!-- Empty space between the navigation menu and the rest of the content of the page -->
-    <div class="emptySpace"></div>
-
-    <!-- Here starts the content of the page -->
-    <div class="container">
-      <div class="section">
-        <h4 class="header center-align bold blue-text text-accent-3">Search</h4>
-      </div>
-
-      <div class="section">
-        <div id="searchCriteriaSection" class="blue accent-2">
-          <div class="row">
-            <div class="col s12">
+    <main>
+      <!-- Navigation menu -->
+      <nav class="blue accent-2">
+        <div class="nav-wrapper">
+          <div class="row navRow blue accent-2">
+            <div class="col s12 m5 l2 center">
+              <a href="#" data-target="mobile-nav" class="sidenav-trigger left"><i class="material-icons">menu</i></a>
+              <a href="./home.html"><img class="logo clickable" src="img/logo.png" alt="Showify logo"></a>
+            </div>
+            <div class="s12 col m7 l5">
               <form class="search-input">
                 <div class="input-field">
-                  <input id="mainSearch" type="search" placeholder="Type a show...">
-                  <label id="mainSearchLabel" class="label-icon" for="search"><i class="material-icons">search</i></label>
+                  <input id="search" type="search" required>
+                  <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                 </div>
               </form>
             </div>
-          </div>
-          <div id="filterSection" class="row">
-            <div class="col s12 m5">
-              <div class="input-field">
-                <select id="genres">
-                  <option value="Any" >Any</option>
-                </select>
-                <label class="white-text">Genre</label>
-              </div>
-            </div>
-            <div class="col s12 m5">
-              <div class="input-field">
-                <select id="years">
-                  <option value="Any" >Any</option>
-                </select>
-                <label class="white-text">Year</label>
-              </div>
-            </div>
-            <div class="col s12 m2">
-              <a id="searchBtn" href="#" class="waves-effect waves-light btn bold blue accent-1">Go</a>
+            <div class="col l5 hide-on-med-and-down">
+              <ul class="right">
+                <li><a href="./followedShows.html"><i class="material-icons left">star</i>Followed Shows</a></li>
+                <li><a href="./profile.html"><i class="material-icons left">person</i>Profile</a></li>
+                <li><a class="logout" href="#"><i class="material-icons left">exit_to_app</i>Logout</a></li>
+              </ul>
             </div>
           </div>
         </div>
-      </div>
+      </nav>
 
-      <div class="section">
-        <div id="searchResultsSection" class="row">
+      <!-- Elements that appear in the side navigation menu when it is triggered -->
+      <ul class="sidenav" id="mobile-nav">
+        <li><a href="./home.html"><i class="material-icons left">home</i>Home</a></li>
+        <li><a href="./followedShows.html"><i class="material-icons left">star</i>Followed Shows</a></li>
+        <li><a href="./profile.html"><i class="material-icons left">person</i>Profile</a></li>
+        <li><a class="logout" href="#"><i class="material-icons left">exit_to_app</i>Logout</a></li>
+      </ul>
+
+      <!-- Empty space between the navigation menu and the rest of the content of the page -->
+      <div class="emptySpace"></div>
+
+      <!-- Here starts the content of the page -->
+      <div class="container">
+        <div class="section">
+          <h4 class="header center-align bold blue-text text-accent-3">Search</h4>
+        </div>
+
+        <div class="section">
+          <div id="searchCriteriaSection" class="blue accent-2">
+            <div class="row">
+              <div class="col s12">
+                <form class="search-input">
+                  <div class="input-field">
+                    <input id="mainSearch" type="search" placeholder="Type a show...">
+                    <label id="mainSearchLabel" class="label-icon" for="search"><i class="material-icons">search</i></label>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div id="filterSection" class="row">
+              <div class="col s12 m5">
+                <div class="input-field">
+                  <select id="genres">
+                    <option value="Any" >Any</option>
+                  </select>
+                  <label class="white-text">Genre</label>
+                </div>
+              </div>
+              <div class="col s12 m5">
+                <div class="input-field">
+                  <select id="years">
+                    <option value="Any" >Any</option>
+                  </select>
+                  <label class="white-text">Year</label>
+                </div>
+              </div>
+              <div class="col s12 m2">
+                <a id="searchBtn" href="#" class="waves-effect waves-light btn bold blue accent-1">Go</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div id="searchResultsSection" class="row">
+          </div>
         </div>
       </div>
-    </div>
+    </main>
+
+    <footer class="page-footer blue accent-2">
+      <div class="row container bold">
+        © 2018 Showify
+        <a class="white-text text-lighten-4 right" href="./about.html">About us</a>
+      </div>
+    </footer>
 
     <!-- Importing JQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="

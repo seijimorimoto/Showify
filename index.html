@@ -18,14 +18,14 @@
 
     <main>
       <div class="row uniqueRow">
-        <div class="col s12 l6 flexCC right">
+        <div id="leftSection" class="col s12 l6 flexCC right">
           <div class="loginRegisterSection center">
             <h4 class="bold">Go and find out what's new in your favorite shows!</h4>
             <a id="loginBtn" class="waves-effect waves-light btn bold blue accent-2">Login</a>
             <a id="registerBtn" class="waves-effect waves-light btn bold white blue-text text-accent-2">Register</a>
           </div>
         </div>
-        <div class="col s12 l6 blue accent-2 flexCC left">
+        <div id="rightSection" class="col s12 l6 blue accent-2 flexCC left">
           <div class="white-text">
             <img id="logo" src="./img/logo.png" alt="Showify Logo">
             <h5 class="featureHeader"><i class="material-icons inlineFeatureIcon">search</i>Track your favorite shows</h5>
@@ -35,7 +35,14 @@
         </div>
       </div>
     </main>
-
+    
+    <footer class="page-footer blue accent-3">
+      <div class="row container bold">
+        © 2018 Showify
+        <a class="white-text right" href="./about.html">About Showify</a>
+      </div>
+    </footer>
+    
     <!-- Importing JQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
@@ -46,10 +53,4 @@
     <!-- Proprietary scripts -->
     <script src="./js/index.js"></script>
   </body>
-  <footer class="page-footer blue accent-3">
-    <div class="row container bold">
-      © 2018 Showify
-      <a class="white-text right" href="./about.html">About Showify</a>
-    </div>
-  </footer>
 </html>
