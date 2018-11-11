@@ -193,4 +193,23 @@ function deleteCommentData($comment,$date,$user){
     }
 }
 
+function loadProfileData($username){
+    $conn = connect();
+    if ($conn != null) {
+        $sql = "SELECT username,firstName,lastName,email,gender,country FROM Users WHERE username = '$username'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $response = array("firstName" => $row["firstName"], "lastName" => $row["lastName"], "username" => $row["username"], "email" => $row["email"], "gender" => $row["gender"],"country" => $row["country"]);
+            }
+            $conn->close();
+            return array("status" => "SUCCESS","response" => $response);
+        }else{
+            return array("status" => "ERROR");
+        }
+    }else{
+        return array("status" => "INTERNAL_SERVER_ERROR", "code" => 500);
+    }
+}
+
 ?>
