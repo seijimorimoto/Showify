@@ -65,6 +65,16 @@ $('#searchBtn').on('click', function() {
   searchShows();
 });
 
+// When the ENTER key is pressed while the main seach box is focused, an AJAX GET request is
+// triggered for retrieving the shows that matched the search criteria.
+$('#mainSearch').on('keypress', function(event) {
+  let keyPressed = event.which;
+  if (keyPressed == 13) { // The key code of ENTER.
+    event.preventDefault();
+    searchShows();
+  }
+});
+
 // Performs an AJAX GET request for retrieving the shows that match the search criteria.
 function searchShows() {
   let searchPattern = $('#mainSearch').val().trim();
