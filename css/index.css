@@ -45,7 +45,7 @@ body, html, #body {
 }
 
 .uniqueRow {
-  height: 100%;
+  height: 93vh; /*Changed the 100% since it wasn't working*/
   margin: 0;
   padding: 0;
 }
