@@ -46,6 +46,24 @@ nav .input-field label {
   border-radius: 5px;
 }
 
+/*
+  The following three rules are specifically used in those pages where multiple shows are shown at
+  the same time (within cards).
+*/
+.showCard {
+  margin-left:auto;
+  margin-right:auto;
+  width: 100%;
+}
+
+.showCardContent {
+  padding: 20px 10px !important;
+}
+
+.showImage {
+  width: 100%;
+}
+
 
 /* Alphabetically ordered rules targeting elements by their id */
 

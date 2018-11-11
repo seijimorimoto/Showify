@@ -147,7 +147,7 @@
     $conn = connect();
 
     if ($conn != null) {
-      $sql = "SELECT id, showName
+      $sql = "SELECT DISTINCT(id), showName, showImage
               FROM Shows S JOIN ShowsGenres SG ON S.id = SG.showId
               WHERE
                 showName LIKE CONCAT('%', IFNULL(?, showName), '%')

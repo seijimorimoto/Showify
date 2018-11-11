@@ -29,7 +29,6 @@
   color: #444;
 }
 
-
 #mainSearch:focus::placeholder {
   color: #686666;
   opacity: 1;

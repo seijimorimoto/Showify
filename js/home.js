@@ -1,3 +1,6 @@
+// IMPORTANT NOTE: INCLUDE THIS JAVASCRIPT FILE AFTER THE common.js FILE IN YOUR HTML, OTHERWISE IT
+// WON'T WORK APPROPRIATELY, SINCE IT USES A FUNCTION FROM THAT FILE.
+
 // Initializes the sidenav component when the page loads.
 $(document).ready(function(){
   $('.sidenav').sidenav();
@@ -14,7 +17,7 @@ $.ajax({
     let $mostFollowedShows = $('#mostFollowedShows');
     if (data.length > 0) {
       for (let index in data) {
-        let showHtml = createMostFollowedShowHtml(data[index]);
+        let showHtml = createShowHtml(data[index]);
         $mostFollowedShows.append(showHtml);
       }
     } else {
@@ -44,22 +47,6 @@ $.ajax({
     }
   }
 });
-
-// Creates HTML content to hold the name and image of a most followed show and to display them
-// appropriately on the home page.
-function createMostFollowedShowHtml(show) {
-  return `<div class="col s6 m4 l3">
-            <div class="card showCard hoverable clickable blue accent-2">
-              <div class="card-image showImage">
-                <img src="${show.showImage}" alt="${show.showName} image">
-              </div>
-              <div class="card-content showCardContent center white-text bold">
-                <p>${show.showName}</p>
-                <p class="showId hide">${show.id}</p>
-              </div>
-            </div>
-          </div>`;
-}
 
 // When any of the most followed shows (displayed as cards) is clicked, redirects the browser to
 // the page corresponding to that specific show.
