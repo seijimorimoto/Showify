@@ -21,7 +21,7 @@
     $conn = connect();
 
     if ($conn != null) {
-      $sql = "SELECT country FROM Countries";
+      $sql = "SELECT country FROM Countries ORDER BY country ASC";
       $result = $conn->query($sql);
 
       if ($result->num_rows > 0) {
@@ -131,6 +131,67 @@
     if ($conn != null) {
       $sql = "SELECT id, showName, showImage FROM Shows S JOIN FollowedShows F ON S.id = F.showId
               GROUP BY showId ORDER BY COUNT(username) DESC LIMIT 10";
+      $result = $conn->query($sql);
+
+      $response = $result->fetch_all(MYSQLI_ASSOC);
+      $conn->close();
+      return array('status' => 'SUCCESS', 'response' => $response);
+    }
+
+    else {
+      return array('status' => 'INTERNAL_SERVER_ERROR', 'code' => 500);
+    }
+  }
+
+  function searchShows($pattern, $genre, $year) {
+    $conn = connect();
+
+    if ($conn != null) {
+      $sql = "SELECT id, showName
+              FROM Shows S JOIN ShowsGenres SG ON S.id = SG.showId
+              WHERE
+                showName LIKE CONCAT('%', IFNULL(?, showName), '%')
+                AND genre = IFNULL(?, genre)
+                AND showYear = IFNULL(?, showYear)
+              ORDER BY showName ASC";
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param('ssi', $pattern, $genre, $year);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      $response = $result->fetch_all(MYSQLI_ASSOC);
+      $stmt->close();
+      $conn->close();
+      return array('status' => 'SUCCESS', 'response' => $response);
+    }
+
+    else {
+      return array('status' => 'INTERNAL_SERVER_ERROR', 'code' => 500);
+    }
+  }
+
+  function retrieveGenres() {
+    $conn = connect();
+
+    if ($conn != null) {
+      $sql = "SELECT genre FROM Genres ORDER BY genre ASC";
+      $result = $conn->query($sql);
+
+      $response = $result->fetch_all(MYSQLI_ASSOC);
+      $conn->close();
+      return array('status' => 'SUCCESS', 'response' => $response);
+    }
+
+    else {
+      return array('status' => 'INTERNAL_SERVER_ERROR', 'code' => 500);
+    }
+  }
+
+  function retrieveYears() {
+    $conn = connect();
+
+    if ($conn != null) {
+      $sql = "SELECT DISTINCT(showYear) FROM Shows ORDER BY showYear ASC";
       $result = $conn->query($sql);
 
       $response = $result->fetch_all(MYSQLI_ASSOC);

@@ -27,8 +27,15 @@
   # - $action: String representing an action requested by the front-end.
   function getRequests($action) {
     switch ($action) {
+      case 'CHECK_SESSION_EXISTS':
+        if (validateSession())
+          echo json_encode('A session exists.');
+        break;
       case 'COUNTRIES':
         requestCountries();
+        break;
+      case 'GENRES':
+        requestGenres();
         break;
       case 'LOGIN':
         requestLogin();
@@ -36,9 +43,11 @@
       case 'MOST_FOLLOWED_SHOWS':
         requestMostFollowedShows();
         break;
-      case 'CHECK_SESSION_EXISTS':
-        if (validateSession())
-          echo json_encode('A session exists.');
+      case 'SEARCH':
+        requestSearchShows();
+        break;
+      case 'YEARS':
+        requestYears();
         break;
     }
   }
@@ -126,6 +135,58 @@
   function requestMostFollowedShows() {
     validateSession();
     $response = retrieveMostFollowedShows();
+
+    if ($response['status'] == 'SUCCESS') {
+      echo json_encode($response['response']);
+    } else {
+      errorHandler($response['status'], $response['code']);
+    }
+  }
+
+  # Handles the request for searching for shows.
+  function requestSearchShows() {
+    validateSession();
+
+    if ($_GET['pattern'] == '')
+      $pattern = null;
+    else 
+      $pattern = $_GET['pattern'];
+    
+    if ($_GET['genre'] == 'Any')
+      $genre = null;
+    else
+      $genre = $_GET['genre'];
+    
+    if ($_GET['year'] == 'Any')
+      $year = null;
+    else
+      $year = $_GET['year'];
+
+    $response = searchShows($pattern, $genre, $year);
+
+    if ($response['status'] == 'SUCCESS') {
+      echo json_encode($response['response']);
+    } else {
+      errorHandler($response['status'], $response['code']);
+    }
+  }
+
+  # Handles the request for retrieving all available genres.
+  function requestGenres() {
+    validateSession();
+    $response = retrieveGenres();
+
+    if ($response['status'] == 'SUCCESS') {
+      echo json_encode($response['response']);
+    } else {
+      errorHandler($response['status'], $response['code']);
+    }
+  }
+
+  # Handles the request for retrieving the years of all shows stored in the DB.
+  function requestYears() {
+    validateSession();
+    $response = retrieveYears();
 
     if ($response['status'] == 'SUCCESS') {
       echo json_encode($response['response']);

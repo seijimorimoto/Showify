@@ -203,18 +203,19 @@ INSERT INTO Genres VALUES ("Action");
 INSERT INTO Genres VALUES ("Adventure");
 INSERT INTO Genres VALUES ("Comedy");
 INSERT INTO Genres VALUES ("Drama");
+INSERT INTO Genres VALUES ("Dystopian");
 INSERT INTO Genres VALUES ("Fantasy");
 INSERT INTO Genres VALUES ("Martial Arts");
 INSERT INTO Genres VALUES ("Medical Drama");
-INSERT INTO Genres VALUES ("School");
-INSERT INTO Genres VALUES ("Shounen");
-INSERT INTO Genres VALUES ("Super Power");
-INSERT INTO Genres VALUES ("Science fiction");
-INSERT INTO Genres VALUES ("Post-apocalyptic");
-INSERT INTO Genres VALUES ("Dystopian");
-INSERT INTO Genres VALUES ("Superhero");
-INSERT INTO Genres VALUES ("Sitcom");
 INSERT INTO Genres VALUES ("Police procedural");
+INSERT INTO Genres VALUES ("Post-apocalyptic");
+INSERT INTO Genres VALUES ("School");
+INSERT INTO Genres VALUES ("Science fiction");
+INSERT INTO Genres VALUES ("Shounen");
+INSERT INTO Genres VALUES ("Sitcom");
+INSERT INTO Genres VALUES ("Superhero");
+INSERT INTO Genres VALUES ("Super Power");
+
 
 -- INSERTS FOR USERS TABLE.
 -- Won't be able to log in as these users (since password won't be hashed), but these inserts are
@@ -310,9 +311,7 @@ INSERT INTO ShowsGenres VALUES (4, "Martial Arts");
 INSERT INTO ShowsGenres VALUES (4, "Shounen");
 INSERT INTO ShowsGenres VALUES (4, "Super Power");
 
-
 -- The 100
-
 INSERT INTO Shows
 (showName, showDescription, showStatus, showYear, showImage, totalEpisodes, currentSeasons)
 VALUES ('The 100',
@@ -322,7 +321,6 @@ VALUES ('The 100',
         'img/The_100.jpg',
         71,
         5);
-
 INSERT INTO ShowsGenres VALUES (5, "Action");
 INSERT INTO ShowsGenres VALUES (5, "Drama");
 INSERT INTO ShowsGenres VALUES (5, "Science fiction");
@@ -339,11 +337,9 @@ VALUES ('Arrow',
         'img/Arrow.jpg',
         142,
         7);
-
 INSERT INTO ShowsGenres VALUES (6, "Action");
 INSERT INTO ShowsGenres VALUES (6, "Drama");
 INSERT INTO ShowsGenres VALUES (6, "Superhero");
-
 
 -- Brooklyn 99
 INSERT INTO Shows
@@ -355,7 +351,6 @@ VALUES ('Brooklyn Nine-Nine',
         'img/Brooklyn_99.jpg',
         112,
         5);
-
 INSERT INTO ShowsGenres VALUES (7, "Sitcom");
 INSERT INTO ShowsGenres VALUES (7, "Police procedural");
 
@@ -369,10 +364,8 @@ VALUES ('Game of Thrones',
         'img/Game_Of_Thrones.jpg',
         67,
         7);
-
 INSERT INTO ShowsGenres VALUES (8, "Fantasy");
 INSERT INTO ShowsGenres VALUES (8, "Drama");
-
 
 -- Superstore
 INSERT INTO Shows
@@ -397,8 +390,6 @@ VALUES ('House M. D.',
         177,
         8);
 INSERT INTO ShowsGenres VALUES (10, "Medical Drama");
-
-
 
 
 -- FollowedShows inserts.
