@@ -1,6 +1,10 @@
 /* Alphabetically ordered rules targeting elements by their HTML tag */
 
 main {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-direction: column;
 }
@@ -10,8 +14,16 @@ main {
 
 .aboutSections {
   align-content: center;
+  -webkit-box-flex: 1 0 auto;
+  -moz-box-flex: 1 0 auto;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
   flex: 1 0 auto;
   flex-direction: column;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   justify-content: center;
   padding: 10px;
@@ -26,9 +38,9 @@ main {
 /* Alphabetically ordered rules targeting elements by their id */
 
 #firstSection {
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 #lastSection {
-  justify-content: start;
+  justify-content: flex-start;
 }

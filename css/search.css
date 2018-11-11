@@ -64,6 +64,10 @@
 
 @media only screen and (min-width: 601px) {
   #filterSection {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     display: flex;
     align-items: center;
   }

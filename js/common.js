@@ -1,6 +1,6 @@
 // When the logout button is clicked, executes an AJAX DELETE request to delete the current session
 // and therefore logout the current user.
-$('.logout').on('click', function() {
+$('.navRow').on('click', '.logout', function() {
   $.ajax({
     url: './data/applicationLayerSeiji.php',
     type: 'DELETE',

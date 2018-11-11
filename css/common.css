@@ -4,6 +4,10 @@ a {
 }
 
 body {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -16,6 +20,10 @@ input[id="search"] {
 }
 
 main {
+  -webkit-box-flex: 1 0 auto;
+  -moz-box-flex: 1 0 auto;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 }
 
@@ -26,12 +34,6 @@ nav .input-field label {
 
 .page-footer{
   background-color: #448aff;
-}
-
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
 }
 
 /* Alphabetically ordered rules targeting elements by their classes */
