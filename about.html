@@ -2,62 +2,76 @@
 <html>
 
 <head>
-    <!-- Importing Google Icon Font -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Importing Materialize.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- Proprietary CSS -->
-    <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/aboutStyles.css">
-    <!-- Let the browser know the website is optimized for mobile -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Specify the character encoding: UTF-8 -->
-    <meta charset="UTF-8">
+  <!-- Importing Google Icon Font -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Importing Materialize.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Proprietary CSS -->
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/aboutStyles.css">
+  <!-- Let the browser know the website is optimized for mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Specify the character encoding: UTF-8 -->
+  <meta charset="UTF-8">
 </head>
-<main>
 
-    <body>
-        <!-- Navigation menu -->
-        <nav class="blue accent-2">
-            <div class="nav-wrapper">
-                <div class="row navRow blue accent-2">
-                    <div class="center">
-                        <img class="logo " src="img/logo.png" alt="Showify logo"></a>
-                    </div>
-                </div>
-            </div>
-        </nav>
+<body>
 
-        <!-- Empty space between the navigation menu and the rest of the content of the page -->
-        <div class="emptySpace"></div>
-
-        <!-- Here starts the content of the page -->
-        <div id="developerContainer" class="valign-wrapper">
-            <div>
-                <h4 class="header bold"> Developed by:</h4>
-                <div class="developer">Angel Seiji Morimoto Burgos</div>
-                <div class="developer">Ivan Rafael Ramirez Martinez</div>
-            </div>
+  <main>
+    <!-- Navigation menu -->
+    <nav class="blue accent-2">
+      <div class="nav-wrapper">
+        <div class="row navRow blue accent-2">
+          <div class="center">
+            <img class="logo " src="img/logo.png" alt="Showify logo"></a>
+          </div>
         </div>
+      </div>
+    </nav>
 
-        <!-- Importing JQuery -->
-        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous"></script>
-        <!--Importing Materialize.js-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-        <!-- Sweet Alert 2 scripts and stylesheets -->
-        <script src="./js/sweetalert2.all.min.js"></script>
-        <!-- Proprietary scripts -->
-    </body>
-</main>
+    <!-- Empty space between the navigation menu and the rest of the content of the page -->
+    <div class="emptySpace"></div>
 
-<footer class="page-footer">
-    <div class="footer-copyright">
-        <div class="container">
-            © 2018 Showify
-            <a class="grey-text text-lighten-4 right" href="./about.html">About us</a>
-        </div>
+    <!-- Here starts the content of the page -->
+    <div id="firstSection" class="aboutSections container center">
+      <h4 class="header bold blue-text text-accent-3"> What is the objective of Showify?</h4> 
+      <h6 class="explanation">
+        Showify is a platform whose main objective is to allow its users to have an organized view
+        of the shows they have watched or are currently watching, and to provide them with details
+        and reviews regarding them.
+      </h6>
     </div>
-</footer>
+
+    <div class="aboutSections container center">
+      <h4 class="header bold blue-text text-accent-3"> Our Vision</h4> 
+      <h6 class="explanation">
+        To be the most used web platform for rating and tracking shows.
+      </h6>
+    </div>
+
+    <div id="lastSection" class="aboutSections container center">
+      <h4 class="header bold blue-text text-accent-3"> The team behind Showify</h4> 
+      <h6 class="explanation">
+        Angel Seiji Morimoto Burgos and Ivan Rafael Ramírez Martínez
+      </h6>
+    </div>
+  </main>
+
+  <footer class="page-footer blue accent-2">
+    <div class="row container bold">
+      © 2018 Showify
+      <a class="white-text text-lighten-4 right" href="./about.html">About us</a>
+    </div>
+  </footer>
+
+  <!-- Importing JQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+  <!--Importing Materialize.js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+  <!-- Sweet Alert 2 scripts and stylesheets -->
+  <script src="./js/sweetalert2.all.min.js"></script>
+  <!-- Proprietary scripts -->
+</body>
 
 </html>
