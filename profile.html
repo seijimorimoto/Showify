@@ -13,87 +13,96 @@
     <!-- Let the browser know the website is optimized for mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
+<main>
 
-<body>
-
-    <!-- Navigation menu -->
-    <nav class="blue accent-2">
-        <div class="nav-wrapper">
-          <div class="row navRow blue accent-2">
-            <div class="col s12 m5 l2 center">
-              <a href="#" data-target="mobile-nav" class="sidenav-trigger left"><i class="material-icons">menu</i></a>
-              <a href="./home.html"><img class="logo clickable" src="img/logo.png" alt="Showify logo"></a>
-            </div>
-            <div class="s12 col m7 l5">
-              <form class="search-input">
-                <div class="input-field">
-                  <input id="search" type="search" required>
-                  <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                </div>
-              </form>
-            </div>
-            <div class="col l5 hide-on-med-and-down">
-              <ul class="right">
-                <li><a href="./followedShows.html"><i class="material-icons left">star</i>Followed Shows</a></li>
-                <li><a href="./profile.html"><i class="material-icons left">person</i>Profile</a></li>
-                <li><a class="logout" href="#"><i class="material-icons left">exit_to_app</i>Logout</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </nav>
-  
-      <!-- Elements that appear in the side navigation menu when it is triggered -->
-      <ul class="sidenav" id="mobile-nav">
-        <li><a href="./home.html"><i class="material-icons left">home</i>Home</a></li>
-        <li><a href="./followedShows.html"><i class="material-icons left">star</i>Followed Shows</a></li>
-        <li><a href="./profile.html"><i class="material-icons left">person</i>Profile</a></li>
-        <li><a class="logout" href="#"><i class="material-icons left">exit_to_app</i>Logout</a></li>
-      </ul>
-
-    <!-- Empty space between the navigation menu and the rest of the content of the page -->
-    <div class="emptySpace"></div>
-    <div class="spaceBar"></div>
-    <div class="hoverable">
-        <div class="little-margin"></div>
-        <div class="title">
-            <h2 class="header center">Welcome <b><span id="username">Ivanovic27</span>!</b></h2>
-        </div>
-    </div>
-    <div class="little-margin"></div>
-    <!-- Here starts the content of the page -->
-    <div class="container">
-        <div class="section">
-            <div class="col s6 m7">
-                <div class="card horizontal hoverable">
-                    <div class="card-image valign-wrapper">
-                        <img src="./img/The_Big_Bang.jpg">
+    <body>
+        <!-- Navigation menu -->
+        <nav class="blue accent-2">
+            <div class="nav-wrapper">
+                <div class="row navRow blue accent-2">
+                    <div class="col s12 m5 l2 center">
+                        <a href="#" data-target="mobile-nav" class="sidenav-trigger left"><i class="material-icons">menu</i></a>
+                        <a href="./home.html"><img class="logo clickable" src="img/logo.png" alt="Showify logo"></a>
                     </div>
-                    <div class="card-stacked">
-                        <div class="card-content valign-wrapper">
-                            <div>
-                                <div class="userInformation"><b>First Name: </b><span id="fName">Iván</span></div>
-                                <div class="userInformation"><b>Last Name: </b><span id="lName">Ramírez</span></div>
-                                <div class="userInformation"><b>E-mail: </b><span id="eMail">ivanrmzmtz@gmail.com</span></div>
-                                <div class="userInformation"><b>Gender: </b><span id="gender">Male</span></div>
-                                <div class="userInformation"><b>Country: </b><span id="country">México</span></div>
+                    <div class="s12 col m7 l5">
+                        <form class="search-input">
+                            <div class="input-field">
+                                <input id="search" type="search" required>
+                                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col l5 hide-on-med-and-down">
+                        <ul class="right">
+                            <li><a href="./followedShows.html"><i class="material-icons left">star</i>Followed Shows</a></li>
+                            <li><a href="./profile.html"><i class="material-icons left">person</i>Profile</a></li>
+                            <li><a class="logout" href="#"><i class="material-icons left">exit_to_app</i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Elements that appear in the side navigation menu when it is triggered -->
+        <ul class="sidenav" id="mobile-nav">
+            <li><a href="./home.html"><i class="material-icons left">home</i>Home</a></li>
+            <li><a href="./followedShows.html"><i class="material-icons left">star</i>Followed Shows</a></li>
+            <li><a href="./profile.html"><i class="material-icons left">person</i>Profile</a></li>
+            <li><a class="logout" href="#"><i class="material-icons left">exit_to_app</i>Logout</a></li>
+        </ul>
+
+        <!-- Empty space between the navigation menu and the rest of the content of the page -->
+        <div class="emptySpace"></div>
+        <div class="spaceBar"></div>
+        <div class="hoverable">
+            <div class="little-margin"></div>
+            <div class="title">
+                <h2 class="header center">Welcome <b><span id="username"></span>!</b></h2>
+            </div>
+        </div>
+        <div class="little-margin"></div>
+        <!-- Here starts the content of the page -->
+        <div class="container">
+            <div class="section">
+                <div class="col s6 m7">
+                    <div class="card horizontal hoverable">
+                        <div class="card-image valign-wrapper">
+                            <img src="./img/profile_picture.png" style="width:200px; height:250px;">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content valign-wrapper">
+                                <div>
+                                    <div class="userInformation"><b>First Name: </b><span id="fName"></span></div>
+                                    <div class="userInformation"><b>Last Name: </b><span id="lName"></span></div>
+                                    <div class="userInformation"><b>E-mail: </b><span id="eMail"></span></div>
+                                    <div class="userInformation"><b>Gender: </b><span id="gender"></span></div>
+                                    <div class="userInformation"><b>Country: </b><span id="country"></span></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Importing JQuery -->
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+        <!--Importing Materialize.js-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+        <!-- Proprietary scripts -->
+        <script src="./js/common.js"></script>
+        <script src="./js/profile.JQ.js"></script>
+        <!-- Sweet Alert 2 scripts and stylesheets -->
+        <script src="./js/sweetalert2.all.min.js"></script>
+    </body>
+</main>
+<footer class="page-footer">
+    <div class="footer-copyright">
+        <div class="container">
+            © 2018 Showify
+            <a class="grey-text text-lighten-4 right" href="./about.html">About us</a>
+        </div>
     </div>
-    <!-- Importing JQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous"></script>
-    <!--Importing Materialize.js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-    <!-- Proprietary scripts -->
-    <script src="./js/common.js"></script>
-    <script src="./js/profile.JQ.js"></script>
-    <!-- Sweet Alert 2 scripts and stylesheets -->
-    <script src="./js/sweetalert2.all.min.js"></script>
-</body>
+</footer>
 
 </html>

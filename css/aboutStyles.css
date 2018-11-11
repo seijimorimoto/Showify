@@ -1,0 +1,22 @@
+#title{
+    display: inline-block;
+}
+
+#maintitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#copyrightyear{
+    padding-top:43px;
+}
+#developerContainer{
+    margin-left: 30px;
+    height: 400px;
+}
+
+.developer{
+    margin-left: 150px;
+    font-size: 20px;
+
+}

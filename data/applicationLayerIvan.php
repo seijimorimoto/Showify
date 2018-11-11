@@ -39,6 +39,8 @@ function getRequests($action)
             break;
         case "LOAD_COMMENTS":loadPosts();
             break;
+        case "LOAD_PROFILE": loadProfile();
+            break;
     }
 }
 
@@ -206,6 +208,24 @@ function deleteComment($_DELETE){
         $response = deleteCommentData($comment,$date,$user);
         if ($response["status"] == "SUCCESS") {
             echo json_encode($response["status"]);
+        } else {
+            errorHandler($response["status"], $response["code"]);
+        }
+    }else{
+        session_destroy();
+        header("HTTP/1.1 406 Session not set yet");
+        die("Your session has expired.");
+    }
+}
+
+//Allows a user to get the information of his account
+function loadProfile(){
+    session_start();
+    if (isset($_SESSION["firstName"]) && isset($_SESSION["lastName"]) && isset($_SESSION["username"])) {
+        $username = $_SESSION["username"];
+        $response = loadProfileData($username);
+        if ($response["status"] == "SUCCESS") {
+            echo json_encode($response["response"]);
         } else {
             errorHandler($response["status"], $response["code"]);
         }
