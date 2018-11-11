@@ -50,7 +50,7 @@ $.urlParam = function (name) {
 
 // When the ENTER key is pressed while the seach box in the navbar is focused, redirects the browser
 // to the search page, unless the search box is empty.
-$('#search').keypress(function(event) {
+$('.navRow').on('keypress', '#search', function(event) {
   let keyPressed = event.which;
   let showName = $(this).val().trim();
   if (keyPressed == 13 && showName != '') { // The key code of ENTER.
