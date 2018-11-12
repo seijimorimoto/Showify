@@ -205,10 +205,15 @@ INSERT INTO Genres VALUES ("Comedy");
 INSERT INTO Genres VALUES ("Drama");
 INSERT INTO Genres VALUES ("Dystopian");
 INSERT INTO Genres VALUES ("Fantasy");
+INSERT INTO Genres VALUES ("Game");
 INSERT INTO Genres VALUES ("Martial Arts");
 INSERT INTO Genres VALUES ("Medical Drama");
+INSERT INTO Genres VALUES ("Movie");
+INSERT INTO Genres VALUES ("Music");
+INSERT INTO Genres VALUES ("Mystery");
 INSERT INTO Genres VALUES ("Police procedural");
 INSERT INTO Genres VALUES ("Post-apocalyptic");
+INSERT INTO Genres VALUES ("Romance");
 INSERT INTO Genres VALUES ("School");
 INSERT INTO Genres VALUES ("Science fiction");
 INSERT INTO Genres VALUES ("Shounen");
@@ -390,6 +395,99 @@ VALUES ('House M. D.',
         177,
         8);
 INSERT INTO ShowsGenres VALUES (10, "Medical Drama");
+
+-- Supergirl
+INSERT INTO Shows
+(showName, showDescription, showStatus, showYear, showImage, totalEpisodes, currentSeasons)
+VALUES ('Supergirl',
+        'As Superman’s cousin, Kara Danvers (aka Supergirl) balances her work as a reporter for
+        CatCo Worldwide Media with her work for the Department of Extra-Normal Operations (DEO), a
+        super-secret government organization whose mission is to keep National City – and the Earth
+         – safe from sinister threats.',
+        'Ongoing',
+        2015,
+        'img/Supergirl.jpg',
+        76,
+        4);
+INSERT INTO ShowsGenres VALUES (11, 'Action');
+INSERT INTO ShowsGenres VALUES (11, 'Adventure');
+INSERT INTO ShowsGenres VALUES (11, 'Drama');
+INSERT INTO ShowsGenres VALUES (11, 'Science fiction');
+INSERT INTO ShowsGenres VALUES (11, 'Superhero');
+
+-- The Flash
+INSERT INTO Shows
+(showName, showDescription, showStatus, showYear, showImage, totalEpisodes, currentSeasons)
+VALUES ('Supergirl',
+        "After being struck by lightning, Barry Allen wakes up from his coma to discover he's been
+        given the power of super speed, becoming the Flash, fighting crime in Central City.",
+        'Ongoing',
+        2014,
+        'img/TheFlash.jpg',
+        103,
+        5);
+INSERT INTO ShowsGenres VALUES (12, 'Action');
+INSERT INTO ShowsGenres VALUES (12, 'Adventure');
+INSERT INTO ShowsGenres VALUES (12, 'Drama');
+INSERT INTO ShowsGenres VALUES (12, 'Science fiction');
+INSERT INTO ShowsGenres VALUES (12, 'Superhero');
+
+-- Sword Art Online
+INSERT INTO Shows
+(showName, showDescription, showStatus, showYear, showImage, totalEpisodes, currentSeasons)
+VALUES ('Sword Art Online',
+        "In the near future, a Virtual Reality Massive Multiplayer Online Role-Playing Game
+        (VRMMORPG) called Sword Art Online has been released where players control their avatars
+        with their bodies using a piece of technology called Nerve Gear. One day, players discover
+        they cannot log out, as the game creator is holding them captive unless they reach the 100th
+        floor of the game's tower and defeat the final boss. However, if they die in the game, they
+        die in real life. Their struggle for survival starts now...",
+        'Ongoing',
+        2012,
+        'img/SwordArtOnline.jpg',
+        61,
+        3);
+INSERT INTO ShowsGenres VALUES (13, 'Action');
+INSERT INTO ShowsGenres VALUES (13, 'Adventure');
+INSERT INTO ShowsGenres VALUES (13, 'Anime');
+INSERT INTO ShowsGenres VALUES (13, 'Fantasy');
+INSERT INTO ShowsGenres VALUES (13, 'Game');
+INSERT INTO ShowsGenres VALUES (13, 'Romance');
+
+-- Stranger Things
+INSERT INTO Shows
+(showName, showDescription, showStatus, showYear, showImage, totalEpisodes, currentSeasons)
+VALUES ('Stranger Things',
+        "When a young boy disappears, his mother, a police chief, and his friends must confront
+        terrifying forces in order to get him back.",
+        'Ongoing',
+        2016,
+        'img/StrangerThings.jpg',
+        18,
+        3);
+INSERT INTO ShowsGenres VALUES (14, 'Adventure');
+INSERT INTO ShowsGenres VALUES (14, 'Drama');
+INSERT INTO ShowsGenres VALUES (14, 'Fantasy');
+INSERT INTO ShowsGenres VALUES (14, 'Mystery');
+INSERT INTO ShowsGenres VALUES (14, 'Science fiction');
+
+-- Bohemian Rhapsody
+INSERT INTO Shows
+(showName, showDescription, showStatus, showYear, showImage, totalEpisodes, currentSeasons)
+VALUES ('Bohemian Rhapsody',
+        "Singer Freddie Mercury, guitarist Brian May, drummer Roger Taylor and bass guitarist John
+        Deacon take the music world by storm when they form the rock 'n' roll band Queen in 1970.
+        Hit songs become instant classics. When Mercury's increasingly wild lifestyle starts to
+        spiral out of control, Queen soon faces its greatest challenge yet – finding a way to keep
+        the band together amid the success and excess.",
+        'Completed',
+        2018,
+        'img/BohemianRhapsody.jpg',
+        1,
+        1);
+INSERT INTO ShowsGenres VALUES (15, 'Drama');
+INSERT INTO ShowsGenres VALUES (15, 'Movie');
+INSERT INTO ShowsGenres VALUES (15, 'Music');
 
 
 -- FollowedShows inserts.
