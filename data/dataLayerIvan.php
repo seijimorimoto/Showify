@@ -165,7 +165,8 @@ function loadPostsData($showID,$username){
 function postCommentData($showID,$username,$content){
     $conn = connect();
     if ($conn != null) {
-        $sql = "INSERT INTO Comments (content,commentDate,username,showId) VALUES ('$content',NOW(),'$username','$showID')";
+        $content2 = addslashes($content);
+        $sql = "INSERT INTO Comments (content,commentDate,username,showId) VALUES ('$content2',NOW(),'$username','$showID')";
         if (mysqli_query($conn, $sql)) {
             $conn->close();
             $response = $username;
