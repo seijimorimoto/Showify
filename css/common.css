@@ -85,6 +85,10 @@ nav .input-field label {
   width: 100%;
 }
 
+.showImage > img {
+  height: 100%;
+  max-height: 324px;
+}
 
 /* Alphabetically ordered rules targeting elements by their id */
 
